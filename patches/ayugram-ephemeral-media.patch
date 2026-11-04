@@ -67,7 +67,7 @@ diff --git a/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistory.swift b/s
 +/// names instead of a generic "attachment".
 +private func ayuAttachmentDisplayName(for file: TelegramMediaFile) -> String {
 +    var isRound = false
-+    var isVideo = file.mimeType.hasPrefix("video/")
++    let isVideo = file.mimeType.hasPrefix("video/")
 +    for attribute in file.attributes {
 +        if case let .Video(_, _, flags, _, _, _) = attribute, flags.contains(.instantRoundVideo) {
 +            isRound = true

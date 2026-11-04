@@ -1,9 +1,18 @@
-# AyuGram iOS artwork
+# Umogram iOS artwork
 
-`AyuGram-logo.png` is the owner-provided Apple/airplane artwork with the exterior black surround removed and real alpha transparency around its purple rounded square. It is suitable for the project README and channel artwork. The original upload is preserved separately by the owner.
+`Brand.png` (1254 × 1254, opaque) is the launcher artwork: the owner's crystal mark — four
+glass wedges on a near-black tile — cropped out of the 1024 px source render and upscaled.
 
-The native app uses a separate full-bleed PNG in `Telegram/Telegram-iOS/Telegram.icon/Assets/AyuGram.png`, delivered inside `patches/ayugram-ghost-mode.patch`. Its purple background fills the square, with no black surround or pre-applied rounded mask. Icon Composer applies the platform mask. The previous foreground/watch scaling overrides were removed for this complete artwork layer.
+`AyuGram-logo.png`, `AyuGram-blue.png` and `AyuGram-graphite.png` are kept under their old
+file names so the patches keep referencing them; all three now hold the same mark.
 
-Both generated assets are 1254 × 1254 pixels. The standalone logo is RGBA with transparent exterior; the app artwork is opaque RGB. No source image resizing is performed in the CI pipeline. The PNG resource is included by the existing native `.icon/**/*` resource glob.
+`previews/Brand.png`, `previews/Blue.png` and `previews/Graphite.png` are the 300 px versions
+shown in the in-app icon picker.
 
-Local verification covers PNG decoding/integrity, alpha/background properties, JSON asset references and applying the binary patch to pinned upstream source. Native Icon Composer compilation and iPhone rendering remain pending the owner's manual Codemagic build. The published build 8 IPA still has the previous artwork.
+The badge (`ExteraBadge.imageset`, `ExteraDeveloperBadge.imageset`) is a template-rendered
+white silhouette of the same mark on a transparent canvas, so iOS tints it with the chat's
+accent colour like every other credibility badge. Sizes are 16/32/48 px.
+
+The native app receives these files through `ci/prepare.py`, which copies them over the
+icon bundles the patches ship. Icon Composer applies the platform mask, so the artwork is
+full-bleed with no pre-applied rounded corners.

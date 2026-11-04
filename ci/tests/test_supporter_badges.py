@@ -75,7 +75,7 @@ class SupporterBadgeTests(unittest.TestCase):
         ios_patch = (ROOT / "patches" / "ayugram-developer-badges.patch").read_text()
 
         self.assertIn('(name) является членом команды разработчиков exteraGram.', base_patch)
-        self.assertIn('(name) поддержал(а) разработку exteraGram или AyuGram', base_patch)
+        self.assertIn('(name) поддержал(а) разработку exteraGram или Umogram', base_patch)
         self.assertGreaterEqual(base_patch.count('replacingOccurrences(of: "(name)"'), 3)
         self.assertEqual(ios_patch.count("supporterBadgesOnLeft && peer.verificationIconFileId == nil"), 5)
 

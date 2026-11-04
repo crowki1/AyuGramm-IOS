@@ -56,7 +56,7 @@ for name in ("Brand", "Blue", "Graphite"):
     contents["images"][0]["scale"] = "3x"
     contents_path.write_text(json.dumps(contents, indent=2) + "\n")
 
-# VoidGram artwork replaces the launcher icons the patches ship: the full-bleed
+# Umogram artwork replaces the launcher icons the patches ship: the full-bleed
 # Icon Composer layers and the glass icons' backdrop and glass logo.
 voidgram = root / "assets/branding/voidgram"
 icons = source / "Telegram/Telegram-iOS"

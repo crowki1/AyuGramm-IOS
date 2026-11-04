@@ -64,7 +64,7 @@ index 00000000..6195b04c
 +@available(iOS 16.0, *)
 +struct AyuSetGhostModeIntent: AppIntent {
 +    static let title: LocalizedStringResource = "Ghost Mode"
-+    static let description = IntentDescription("Turns AyuGram Ghost Mode on or off: no read receipts, online status, typing or upload progress.")
++    static let description = IntentDescription("Turns Umogram Ghost Mode on or off: no read receipts, online status, typing or upload progress.")
 +
 +    @Parameter(title: "Enabled", default: true)
 +    var enabled: Bool
@@ -75,7 +75,7 @@ index 00000000..6195b04c
 +
 +    func perform() async throws -> some IntentResult & ProvidesDialog {
 +        guard let answer = await AyuIntentChannel.ask("ghost.set", ["enabled": self.enabled]), answer["ok"] as? Bool == true else {
-+            throw AyuIntentError(message: ayuRussian ? "AyuGram ещё не готов. Откройте приложение и попробуйте снова." : "AyuGram is not ready yet. Open the app and try again.")
++            throw AyuIntentError(message: ayuRussian ? "Umogram ещё не готов. Откройте приложение и попробуйте снова." : "Umogram is not ready yet. Open the app and try again.")
 +        }
 +        let text = self.enabled ? (ayuRussian ? "Режим призрака включён" : "Ghost Mode is on") : (ayuRussian ? "Режим призрака выключен" : "Ghost Mode is off")
 +        return .result(dialog: IntentDialog(stringLiteral: text))
@@ -84,7 +84,7 @@ index 00000000..6195b04c
 +
 +@available(iOS 16.0, *)
 +struct AyuSendMessageIntent: AppIntent {
-+    static let title: LocalizedStringResource = "Send a Message with AyuGram"
++    static let title: LocalizedStringResource = "Send a Message with Umogram"
 +    static let description = IntentDescription("Sends a text message to a username (@name) or to a chat by its title.")
 +
 +    @Parameter(title: "Recipient", description: "A @username or a chat title")
@@ -110,12 +110,12 @@ index 00000000..6195b04c
 +
 +@available(iOS 16.0, *)
 +struct AyuUnreadCountIntent: AppIntent {
-+    static let title: LocalizedStringResource = "Unread Chats in AyuGram"
++    static let title: LocalizedStringResource = "Unread Chats in Umogram"
 +    static let description = IntentDescription("Tells how many unread messages and chats there are.")
 +
 +    func perform() async throws -> some IntentResult & ReturnsValue<Int> & ProvidesDialog {
 +        guard let answer = await AyuIntentChannel.ask("unread.count") else {
-+            throw AyuIntentError(message: ayuRussian ? "AyuGram ещё не готов." : "AyuGram is not ready yet.")
++            throw AyuIntentError(message: ayuRussian ? "Umogram ещё не готов." : "Umogram is not ready yet.")
 +        }
 +        let messages = answer["messages"] as? Int ?? 0
 +        let chats = answer["chats"] as? Int ?? 0
@@ -5395,8 +5395,8 @@ index 00000000..990bca88
 +                Label(isOn ? "On" : "Off", systemImage: isOn ? "eye.slash.fill" : "eye.fill")
 +            }
 +        }
-+        .displayName("AyuGram Ghost Mode")
-+        .description("Turns AyuGram Ghost Mode on and off.")
++        .displayName("Umogram Ghost Mode")
++        .description("Turns Umogram Ghost Mode on and off.")
 +    }
 +}
 +#endif
@@ -5703,7 +5703,7 @@ index 00000000..ca3ee78f
 +        self.task = task
 +        task.resume()
 +        self.update("connected to \(url.host ?? "")")
-+        self.send(["type": "hello", "client": "AyuGram iOS"])
++        self.send(["type": "hello", "client": "Umogram iOS"])
 +        self.receive(acceptedRisk: acceptedRisk)
 +    }
 +
@@ -6011,14 +6011,14 @@ index 00000000..223c7092
 +
 +    public static func refusalText(_ russian: Bool) -> String {
 +        return russian
-+            ? "Этот плагин внедряется в работу приложения (плеер, тексты песен и т.п.). Такие плагины можно ставить только из официального каталога AyuGram.\n\nЧтобы всё равно поставить его, включите «Инжект-плагины не из официального источника» в настройках разработчика."
-+            : "This plugin injects into the app (player, lyrics and so on). Such plugins can only be installed from the official AyuGram catalog.\n\nTo install it anyway, turn on \"Injecting plugins from unofficial sources\" in the developer settings."
++            ? "Этот плагин внедряется в работу приложения (плеер, тексты песен и т.п.). Такие плагины можно ставить только из официального каталога Umogram.\n\nЧтобы всё равно поставить его, включите «Инжект-плагины не из официального источника» в настройках разработчика."
++            : "This plugin injects into the app (player, lyrics and so on). Such plugins can only be installed from the official Umogram catalog.\n\nTo install it anyway, turn on \"Injecting plugins from unofficial sources\" in the developer settings."
 +    }
 +
 +    public static func disclaimerText(_ russian: Bool) -> String {
 +        return russian
-+            ? "⚠️ Плагин НЕ из официального источника и внедряется в работу приложения.\n\nAyuGram не проверял этот код. Он может сломать плеер, тексты песен или другие функции и вести себя не так, как обещает описание.\n\nВся ответственность за установку и любые последствия лежит полностью на вас. Разработчики AyuGram за это не отвечают."
-+            : "⚠️ This plugin is NOT from the official source and injects into the app.\n\nAyuGram has not reviewed this code. It may break the player, lyrics or other features and may not behave as described.\n\nYou take full responsibility for installing it and for any consequences. The AyuGram developers are not responsible."
++            ? "⚠️ Плагин НЕ из официального источника и внедряется в работу приложения.\n\nUmogram не проверял этот код. Он может сломать плеер, тексты песен или другие функции и вести себя не так, как обещает описание.\n\nВся ответственность за установку и любые последствия лежит полностью на вас. Разработчики Umogram за это не отвечают."
++            : "⚠️ This plugin is NOT from the official source and injects into the app.\n\nUmogram has not reviewed this code. It may break the player, lyrics or other features and may not behave as described.\n\nYou take full responsibility for installing it and for any consequences. The Umogram developers are not responsible."
 +    }
 +}
 +
@@ -6374,7 +6374,7 @@ index 00000000..a9c651fd
 +            let trimmed = line.trimmingCharacters(in: .whitespaces)
 +            if prefixes.contains(where: { trimmed.hasPrefix($0) }) {
 +                let indent = String(line.prefix(while: { $0 == " " || $0 == "\t" }))
-+                lines.append(indent + "pass  # AyuGram: " + trimmed)
++                lines.append(indent + "pass  # Umogram: " + trimmed)
 +            } else {
 +                lines.append(line)
 +            }
@@ -7707,7 +7707,7 @@ index 00000000..2e495f4e
 +    static func complete(pluginId: String, args: [String: Any], completion: @escaping (Any) -> Void) {
 +        let key = AyuTools.aiKey
 +        guard !key.isEmpty, let url = URL(string: AyuTools.aiEndpoint), url.scheme == "https" else {
-+            return completion(["error": "No AI service is set up in AyuGram → Tools."])
++            return completion(["error": "No AI service is set up in Umogram → Tools."])
 +        }
 +        AyuPluginPrivacy.shared.record(pluginId, api: "ai.complete", host: url.host)
 +        var messages: [[String: String]] = []
@@ -8099,7 +8099,7 @@ index 00000000..88c84197
 +            let ru = Locale.preferredLanguages.first?.hasPrefix("ru") == true
 +            switch self {
 +            case let .missingDependency(requirement): return ru ? "Сначала установите плагин \(requirement)." : "Install \(requirement) first."
-+            case let .revoked(reason): return (ru ? "Команда AyuGram отозвала этот плагин." : "The AyuGram team revoked this plugin.") + (reason.isEmpty ? "" : " " + reason)
++            case let .revoked(reason): return (ru ? "Команда Umogram отозвала этот плагин." : "The Umogram team revoked this plugin.") + (reason.isEmpty ? "" : " " + reason)
 +            case .invalidFile: return ru ? "Файл не является плагином на JavaScript, Python или WebAssembly." : "The file is not a JavaScript, Python or WebAssembly plugin."
 +            case .tooLarge: return ru ? "Плагин слишком большой (код — до 512 КБ, WebAssembly — до 2 МБ)." : "The plugin is too large (512 KB for code, 2 MB for WebAssembly)."
 +            case .invalidIdentifier: return ru ? "Укажите @id из латинских букв, цифр, «-» и «_»." : "Use an @id of latin letters, digits, - and _."
@@ -8695,7 +8695,7 @@ index 00000000..88c84197
 +            }
 +            self.vm = vm
 +            self.context = context
-+            context.name = "AyuGram plugin " + self.id
++            context.name = "Umogram plugin " + self.id
 +            // Developer option: Safari → Develop → this device → the plugin's context.
 +            if #available(iOS 16.4, *), AyuDeveloperSettings.unlocked, UserDefaults.standard.bool(forKey: "ayu.dev.webInspector") {
 +                context.isInspectable = true
@@ -9296,7 +9296,7 @@ index 00000000..2bad9fb0
 +import CryptoKit
 +import TelegramCore
 +
-+/// "Verified by the AyuGram for iOS team": the list the team keeps with @ayugram_dev_settings_bot
++/// "Verified by the Umogram for iOS team": the list the team keeps with @ayugram_dev_settings_bot
 +/// in github.com/murk-sus/AyuGramm-Plugins (registry/verified.json). The bot signs it with
 +/// Ed25519; the app accepts it only when the signature matches the key below, so nobody else —
 +/// plugins included — can add a name. Every AyuGram for iOS user sees the same labels.
@@ -9457,7 +9457,7 @@ index 00000000..2bad9fb0
 +
 +    /// The label line the app shows under the user's name.
 +    public static func caption(_ entry: Entry, russian: Bool) -> String {
-+        return entry.text + (russian ? " — подтверждено командой AyuGram для iOS." : " — confirmed by the AyuGram for iOS team.")
++        return entry.text + (russian ? " — подтверждено командой Umogram для iOS." : " — confirmed by the Umogram for iOS team.")
 +    }
 +}
 diff --git a/submodules/AuthorizationUI/Sources/AuthorizationSequenceController.swift b/submodules/AuthorizationUI/Sources/AuthorizationSequenceController.swift
@@ -74196,7 +74196,7 @@ index 00000000..e3e2bb20
 @@ -0,0 +1,30 @@
 +import Foundation
 +
-+/// Security → Accounts → "AyuGram on this account": accounts listed here run as plain Telegram
++/// Security → Accounts → "Umogram on this account": accounts listed here run as plain Telegram
 +/// (no ghost mode, history, effects), like decoy mode but chosen per account.
 +public enum AyuAccountScope {
 +    public static let didChangeNotification = Notification.Name("AyuGram.AccountScopeChanged")
@@ -78546,7 +78546,7 @@ index 00000000..73c63b43
 +        case .media: return ru ? "Голос, кружки, звонки и загрузки" : "Voice, video messages, calls and downloads"
 +        case .appearance: return ru ? "Сообщения, список чатов, панели и иконки" : "Messages, chat list, panels and icons"
 +        case .security: return ru ? "Защита чатов, код-пароль и аккаунты" : "Chat protection, passcode and accounts"
-+        case .more: return ru ? "Плагины, инструменты, бейджи, настройки AyuGram" : "Plugins, tools, badges, AyuGram settings"
++        case .more: return ru ? "Плагины, инструменты, бейджи, настройки Umogram" : "Plugins, tools, badges, Umogram settings"
 +        }
 +    }
 +
@@ -78625,7 +78625,7 @@ index 00000000..73c63b43
 +            AyuCategoryItem(id: 35, symbol: "paintbrush.pointed.fill", color: 0xFF2D55, titleRu: "Тема и фон", titleEn: "Theme & background", subtitleRu: "AMOLED, вкладки, старый дизайн, снег, эффекты", subtitleEn: "AMOLED, tabs, classic design, snow, effects", open: page { ayuAppearancePlusController(context: $0) }),
 +            AyuCategoryItem(id: 36, symbol: "drop.halffull", color: 0x32ADE6, titleRu: "Стекло и пузыри", titleEn: "Glass and bubbles", subtitleRu: "", subtitleEn: "", open: page { ayuGlassController(context: $0) }),
 +            AyuCategoryItem(id: 37, symbol: "paintpalette.fill", color: 0xAF52DE, titleRu: "Кастомизация", titleEn: "Customization", subtitleRu: "Цвета, бейджи", subtitleEn: "Colours, badges", open: page { ayuCustomizationController(context: $0) }),
-+            AyuCategoryItem(id: 38, symbol: "square.grid.2x2.fill", color: 0xFF9500, titleRu: "Иконки и бейдж", titleEn: "Icons & badge", subtitleRu: "Иконка приложения и значок AyuGram", subtitleEn: "App icon and the AyuGram badge", open: page { ayuIconsController(context: $0) }),
++            AyuCategoryItem(id: 38, symbol: "square.grid.2x2.fill", color: 0xFF9500, titleRu: "Иконки и бейдж", titleEn: "Icons & badge", subtitleRu: "Иконка приложения и значок Umogram", subtitleEn: "App icon and the Umogram badge", open: page { ayuIconsController(context: $0) }),
 +            AyuCategoryItem(id: 39, symbol: "person.crop.square.fill", color: 0x8E8E93, titleRu: "Профиль и настройки", titleEn: "Profile & settings", subtitleRu: "ID, дата-центр, даты и пункты Настроек", subtitleEn: "ID, data center, dates and Settings rows", open: page { ayuSettingsCategoryController(context: $0, category: 3) }),
 +            AyuCategoryItem(id: 40, symbol: "switch.2", color: 0x6750A4, titleRu: "Material Design", titleEn: "Material Design", subtitleRu: "", subtitleEn: "", open: page { ayuMaterialDesignController(context: $0) })
 +        ]
@@ -78633,7 +78633,7 @@ index 00000000..73c63b43
 +        return [
 +            AyuCategoryItem(id: 51, symbol: "lock.fill", color: 0xFF9500, titleRu: "Защита чатов", titleEn: "Chat protection", subtitleRu: "Face ID на чаты, скрытые чаты, скриншоты", subtitleEn: "Face ID chats, hidden chats, screenshots", open: page { ayuChatProtectionController(context: $0) }),
 +            AyuCategoryItem(id: 52, symbol: "theatermasks.fill", color: 0x5856D6, titleRu: "Режим-приманка и двойное дно", titleEn: "Decoy & hidden account", subtitleRu: "Второй аккаунт за отдельным кодом", subtitleEn: "A second account behind its own code", open: page { ayuDecoySettingsController(context: $0) }),
-+            AyuCategoryItem(id: 53, symbol: "person.2.fill", color: 0x007AFF, titleRu: "Аккаунты", titleEn: "Accounts", subtitleRu: "Настройки AyuGram для каждого аккаунта", subtitleEn: "AyuGram settings per account", open: page { ayuAccountsSettingsController(context: $0) })
++            AyuCategoryItem(id: 53, symbol: "person.2.fill", color: 0x007AFF, titleRu: "Аккаунты", titleEn: "Accounts", subtitleRu: "Настройки Umogram для каждого аккаунта", subtitleEn: "Umogram settings per account", open: page { ayuAccountsSettingsController(context: $0) })
 +        ]
 +    case .more:
 +        return [
@@ -78643,7 +78643,7 @@ index 00000000..73c63b43
 +            AyuCategoryItem(id: 64, symbol: "antenna.radiowaves.left.and.right", color: 0x007AFF, titleRu: "Контакты рядом", titleEn: "Nearby contact", subtitleRu: "", subtitleEn: "", open: page { ayuNearbyContactController(context: $0) }),
 +            AyuCategoryItem(id: 65, symbol: "gearshape.fill", color: 0x8E8E93, titleRu: "Общие", titleEn: "General", subtitleRu: "", subtitleEn: "", open: page { ayuGeneralSettingsController(context: $0) }),
 +            AyuCategoryItem(id: 66, symbol: "star.circle.fill", color: 0xFF9500, titleRu: "Прочее", titleEn: "Other", subtitleRu: "", subtitleEn: "", open: page { ayuOtherSettingsController(context: $0, navigation: nil) }),
-+            AyuCategoryItem(id: 67, symbol: "square.and.arrow.up.on.square.fill", color: 0x34C759, titleRu: "Настройки AyuGram", titleEn: "AyuGram settings", subtitleRu: "Экспорт, импорт, сброс, пункты Настроек", subtitleEn: "Export, import, reset, Settings rows", open: page { ayuWhiteGramController(context: $0, groups: [.settings], title: ayuIsRussian($0) ? "Настройки AyuGram" : "AyuGram settings") })
++            AyuCategoryItem(id: 67, symbol: "square.and.arrow.up.on.square.fill", color: 0x34C759, titleRu: "Настройки Umogram", titleEn: "Umogram settings", subtitleRu: "Экспорт, импорт, сброс, пункты Настроек", subtitleEn: "Export, import, reset, Settings rows", open: page { ayuWhiteGramController(context: $0, groups: [.settings], title: ayuIsRussian($0) ? "Настройки Umogram" : "Umogram settings") })
 +        ]
 +    }
 +}
@@ -78741,7 +78741,7 @@ index 00000000..f4c4c0e3
 +    return ayuPage(context: context, title: { $0 ? "Обход ограничений" : "Restriction bypass" }, notifications: [], entries: { ru in [
 +        .header(1, 0, ru ? "ИСЧЕЗАЮЩИЕ МЕДИА" : "DISAPPEARING MEDIA"),
 +        .toggle(1, 1, symbol("photo.badge.arrow.down.fill", 0x30B0C7), ru ? "Сохранять одноразовые медиа" : "Save view-once media", ru ? "Фото, видео и кружки «на один просмотр» сохраняются в «Фото» при открытии" : "View-once photos, videos and video messages are saved to Photos when opened", AyuExtras.isOn(.saveViewOnce)),
-+        .info(1, 2, ru ? "Запрет копирования и пересылки, который владелец чата включил сам (в том числе в платных каналах), AyuGram не обходит, и уведомления о скриншотах в секретных чатах не скрывает." : "Copy and forward restrictions the chat owner turned on (paid channels included) are respected, and secret-chat screenshot notices are not hidden.")
++        .info(1, 2, ru ? "Запрет копирования и пересылки, который владелец чата включил сам (в том числе в платных каналах), Umogram не обходит, и уведомления о скриншотах в секретных чатах не скрывает." : "Copy and forward restrictions the chat owner turned on (paid channels included) are respected, and secret-chat screenshot notices are not hidden.")
 +    ] }, open: { _, _, _ in }, toggle: { id, value in
 +        if id == 1 { AyuExtras.set(.saveViewOnce, value) }
 +    })
@@ -78980,7 +78980,7 @@ index 00000000..f4c4c0e3
 +        .link(1, 1, symbol("app.badge.fill", 0xFF9500), ru ? "Иконка приложения" : "App icon", ""),
 +        .link(1, 2, symbol("square.grid.2x2.fill", 0x32ADE6), ru ? "Набор иконок вкладок" : "Tab icon pack", AyuTools.iconPack.title(ru)),
 +        .header(2, 10, ru ? "БЕЙДЖ" : "BADGE"),
-+        .toggle(2, 11, symbol("checkmark.seal.fill", 0x8E5CF7), ru ? "Скрыть значок AyuGram у людей" : "Hide the AyuGram badge on people", ru ? "В чатах не показывается; в профиле остаётся" : "Hidden in chats; still shown in the profile", AyuExtras.isOn(.hideAyuBadges))
++        .toggle(2, 11, symbol("checkmark.seal.fill", 0x8E5CF7), ru ? "Скрыть значок Umogram у людей" : "Hide the Umogram badge on people", ru ? "В чатах не показывается; в профиле остаётся" : "Hidden in chats; still shown in the profile", AyuExtras.isOn(.hideAyuBadges))
 +    ] }, open: { id, _, present in
 +        let ru = ayuIsRussian(context)
 +        switch id {
@@ -79002,10 +79002,10 @@ index 00000000..f4c4c0e3
 +        .link(1, 1, symbol("eye.slash.fill", 0x8E8E93), ru ? "Скрытые чаты" : "Hidden chats", "\(AyuChatPrivacy.hidden.count)"),
 +        .info(1, 2, ru ? "Заблокировать чат Face ID или скрыть его: долгое нажатие на чат в списке." : "Lock a chat with Face ID or hide it: long-press it in the chat list."),
 +        .header(2, 10, ru ? "ЭКРАН" : "SCREEN"),
-+        .toggle(2, 11, symbol("rectangle.dashed.badge.record", 0xFF3B30), ru ? "Запретить скриншоты в AyuGram" : "Block screenshots in AyuGram", ru ? "Снимки экрана и запись показывают пустой экран" : "Screenshots and recordings show an empty screen", AyuExtras.isOn(.blockScreenshots)),
++        .toggle(2, 11, symbol("rectangle.dashed.badge.record", 0xFF3B30), ru ? "Запретить скриншоты в Umogram" : "Block screenshots in Umogram", ru ? "Снимки экрана и запись показывают пустой экран" : "Screenshots and recordings show an empty screen", AyuExtras.isOn(.blockScreenshots)),
 +        .toggle(2, 12, symbol("eye.slash.fill", 0x8E8E93), ru ? "Размытие в переключателе" : "Blur in app switcher", nil, AyuExtras.isOn(.blurInAppSwitcher)),
 +        .header(3, 20, ru ? "КОД-ПАРОЛЬ" : "PASSCODE"),
-+        .toggle(3, 21, symbol("faceid", 0x34C759), ru ? "Face ID для настроек AyuGram" : "Face ID for AyuGram settings", ru ? "Настройки AyuGram открываются только после проверки" : "AyuGram settings open only after authentication", AyuExtras.isOn(.lockAyuSettings))
++        .toggle(3, 21, symbol("faceid", 0x34C759), ru ? "Face ID для настроек Umogram" : "Face ID for Umogram settings", ru ? "Настройки Umogram открываются только после проверки" : "Umogram settings open only after authentication", AyuExtras.isOn(.lockAyuSettings))
 +    ] }, open: { id, _, _ in
 +        if id == 1 {
 +            AyuHiddenChatsController.present(context: context, open: { peer in
@@ -79031,7 +79031,7 @@ index 00000000..f4c4c0e3
 +    let accountId = context.account.peerId.toInt64()
 +    return ayuPage(context: context, title: { $0 ? "Аккаунты" : "Accounts" }, notifications: [], entries: { ru in [
 +        .header(1, 0, ru ? "ЭТОТ АККАУНТ" : "THIS ACCOUNT"),
-+        .toggle(1, 1, symbol("power.circle.fill", 0xFF3B30), ru ? "AyuGram на этом аккаунте" : "AyuGram on this account", ru ? "Выключите, чтобы этот аккаунт работал как обычный Telegram: без призрака, фильтров и настроек интерфейса AyuGram" : "Turn off to run this account as plain Telegram: no ghost mode, filters or AyuGram interface settings", !AyuAccountScope.isDisabled(accountId)),
++        .toggle(1, 1, symbol("power.circle.fill", 0xFF3B30), ru ? "Umogram на этом аккаунте" : "Umogram on this account", ru ? "Выключите, чтобы этот аккаунт работал как обычный Telegram: без призрака, фильтров и настроек интерфейса Umogram" : "Turn off to run this account as plain Telegram: no ghost mode, filters or Umogram interface settings", !AyuAccountScope.isDisabled(accountId)),
 +        .header(2, 10, ru ? "ВСЕ АККАУНТЫ" : "ALL ACCOUNTS"),
 +        .toggle(2, 11, symbol("paintpalette.fill", 0xAF52DE), ru ? "Свой акцент у каждого аккаунта" : "Accent per account", nil, AyuExtras.isOn(.accentPerAccount)),
 +        .toggle(2, 12, symbol("person.2.circle.fill", 0x007AFF), ru ? "Кнопка аккаунтов в Чатах" : "Accounts button in Chats", ru ? "Быстрое переключение аккаунтов из списка чатов" : "Switch accounts from the chat list", AyuExtras.isOn(.accountsButton)),
@@ -79062,7 +79062,7 @@ index 00000000..f4c4c0e3
 +    var error: NSError?
 +    guard authentication.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else { return open() }
 +    let ru = ayuIsRussian(context)
-+    authentication.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: ru ? "Откройте настройки AyuGram" : "Open AyuGram settings", reply: { success, _ in
++    authentication.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: ru ? "Откройте настройки Umogram" : "Open Umogram settings", reply: { success, _ in
 +        if success {
 +            DispatchQueue.main.async(execute: open)
 +        }
@@ -79183,7 +79183,7 @@ index 00000000..cd667259
 +    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 +        switch section {
 +        case 0: return self.russian ? "Выключите разрешение, чтобы забрать его у плагина. Плагин перезапустится." : "Turn a permission off to take it back. The plugin restarts."
-+        case 3: return self.russian ? "Если хук работает дольше 100 мс, AyuGram предупредит, что плагин тормозит." : "AyuGram warns when a hook takes longer than 100 ms."
++        case 3: return self.russian ? "Если хук работает дольше 100 мс, Umogram предупредит, что плагин тормозит." : "Umogram warns when a hook takes longer than 100 ms."
 +        default: return nil
 +        }
 +    }
@@ -79393,7 +79393,7 @@ index 00000000..ea7105ff
 +            |> take(1)
 +            |> deliverOnMainQueue).startStandalone(next: { peer in
 +                guard let peer else {
-+                    let failed = UIAlertController(title: "AyuGram", message: russian ? "Не нашёл @\(name)." : "Could not find @\(name).", preferredStyle: .alert)
++                    let failed = UIAlertController(title: "Umogram", message: russian ? "Не нашёл @\(name)." : "Could not find @\(name).", preferredStyle: .alert)
 +                    failed.addAction(UIAlertAction(title: "OK", style: .default))
 +                    presentNative?(failed)
 +                    return
@@ -79565,7 +79565,7 @@ index 00000000..7006a3b1
 +    }
 +
 +    func showError(_ text: String) {
-+        let alert = UIAlertController(title: "AyuGram", message: text, preferredStyle: .alert)
++        let alert = UIAlertController(title: "Umogram", message: text, preferredStyle: .alert)
 +        alert.addAction(UIAlertAction(title: "OK", style: .default))
 +        self.present(alert, animated: true)
 +    }
@@ -79629,7 +79629,7 @@ index 00000000..0b0e769f
 +        let ru = context.sharedContext.currentPresentationData.with { $0 }.strings.baseLanguageCode.hasPrefix("ru")
 +        switch AyuDecoyRow(rawValue: id) {
 +        case .codes?:
-+            let alert = UIAlertController(title: ru ? "Коды" : "Codes", message: ru ? "Настоящий код возвращает в ваш аккаунт. Фейковый показывает «AyuGram больше не работает» и стирает все локальные данные. Минимум 4 символа, коды должны различаться." : "The real code returns to your account. The fake code shows \"AyuGram no longer works\" and wipes all local data. At least 4 characters; the codes must differ.", preferredStyle: .alert)
++            let alert = UIAlertController(title: ru ? "Коды" : "Codes", message: ru ? "Настоящий код возвращает в ваш аккаунт. Фейковый показывает «Umogram больше не работает» и стирает все локальные данные. Минимум 4 символа, коды должны различаться." : "The real code returns to your account. The fake code shows \"Umogram no longer works\" and wipes all local data. At least 4 characters; the codes must differ.", preferredStyle: .alert)
 +            alert.addTextField { field in
 +                field.placeholder = ru ? "Настоящий код" : "Real code"
 +                field.isSecureTextEntry = true
@@ -79699,7 +79699,7 @@ index 00000000..0b0e769f
 +            .link(1, AyuDecoyRow.account.rawValue, AyuSettingsIcons.symbol("person.2.fill", color: UIColor(rgb: 0x007AFF)), ru ? "Что показывать" : "What to show", decoyName),
 +            .info(1, AyuDecoyRow.info.rawValue, ru ? "Работает, когда включено и заданы оба кода." : "Works when it is on and both codes are set."),
 +            .header(2, AyuDecoyRow.howHeader.rawValue, ru ? "КАК ЭТО РАБОТАЕТ" : "HOW IT WORKS"),
-+            .info(2, AyuDecoyRow.how.rawValue, ru ? "При запуске появляется иконка AyuGram. Два быстрых нажатия по ней — и открывается фейк: второй аккаунт или встроенный липовый Telegram. В фейке нет раздела AyuGram, все функции AyuGram выключены.\n\nПосле полного закрытия приложения AyuGram спросит код. Настоящий код вернёт ваш аккаунт и больше не будет спрашиваться до следующего фейка. Фейковый код покажет «AyuGram больше не работает» и сотрёт все локальные данные — понадобится переустановка." : "At launch the AyuGram icon appears. Two quick taps on it open the decoy: a second account or a built-in stand-in Telegram. The decoy has no AyuGram section and every AyuGram feature is off.\n\nAfter the app is fully closed, AyuGram asks for a code. The real code brings your account back and is not asked again until the next decoy. The fake code shows \"AyuGram no longer works\" and wipes all local data — a reinstall is needed.")
++            .info(2, AyuDecoyRow.how.rawValue, ru ? "При запуске появляется иконка Umogram. Два быстрых нажатия по ней — и открывается фейк: второй аккаунт или встроенный липовый Telegram. В фейке нет раздела Umogram, все функции Umogram выключены.\n\nПосле полного закрытия приложения Umogram спросит код. Настоящий код вернёт ваш аккаунт и больше не будет спрашиваться до следующего фейка. Фейковый код покажет «Umogram больше не работает» и сотрёт все локальные данные — понадобится переустановка." : "At launch the Umogram icon appears. Two quick taps on it open the decoy: a second account or a built-in stand-in Telegram. The decoy has no Umogram section and every Umogram feature is off.\n\nAfter the app is fully closed, Umogram asks for a code. The real code brings your account back and is not asked again until the next decoy. The fake code shows \"Umogram no longer works\" and wipes all local data — a reinstall is needed.")
 +        ]
 +        let data = ItemListPresentationData(presentationData)
 +        let state = ItemListControllerState(presentationData: data, title: .text(ru ? "Фейк-режим" : "Decoy mode"), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
@@ -79802,7 +79802,7 @@ index 00000000..7976ce86
 +                    }
 +                    let _ = (context.engine.messages.ayuImportDesktopHistory(rows)
 +                    |> deliverOnMainQueue).startStandalone(next: { added in
-+                        alert(context, ru ? "Найдено \(rows.count), добавлено \(added). Сообщения появятся в истории AyuGram для этих чатов. Сохранение удалённых/изменённых должно быть включено." : "Found \(rows.count), added \(added). They appear in AyuGram history for those chats. Saving deleted/edited messages must be on.")
++                        alert(context, ru ? "Найдено \(rows.count), добавлено \(added). Сообщения появятся в истории Umogram для этих чатов. Сохранение удалённых/изменённых должно быть включено." : "Found \(rows.count), added \(added). They appear in Umogram history for those chats. Saving deleted/edited messages must be on.")
 +                    })
 +                }
 +            }
@@ -79896,7 +79896,7 @@ index 00000000..36cb3a18
 +            }
 +        case .shareLog:
 +            guard let url = AyuDevLog.shared.fileURL, FileManager.default.fileExists(atPath: url.path) else {
-+                presentController?(textAlertController(context: context, title: "AyuGram", text: ru ? "Журнал пока пуст. Включите подробный журнал и повторите действие." : "The log is empty. Turn on verbose logging and reproduce the issue.", actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})]))
++                presentController?(textAlertController(context: context, title: "Umogram", text: ru ? "Журнал пока пуст. Включите подробный журнал и повторите действие." : "The log is empty. Turn on verbose logging and reproduce the issue.", actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})]))
 +                return
 +            }
 +            presentNative?(UIActivityViewController(activityItems: [url], applicationActivities: nil))
@@ -79918,7 +79918,7 @@ index 00000000..36cb3a18
 +            guard !value else { return }
 +            let presentationData = context.sharedContext.currentPresentationData.with { $0 }
 +            let ru = presentationData.strings.baseLanguageCode.hasPrefix("ru")
-+            presentController?(textAlertController(context: context, title: ru ? "Выключить режим разработчика?" : "Turn off developer mode?", text: ru ? "Все опции разработчика выключатся, а раздел «Отладка» исчезнет после перезапуска. Включить снова — 5 тапов по версии AyuGram." : "Every developer option is turned off and the Debugging section disappears after a relaunch. To turn it back on, tap the AyuGram version 5 times.", actions: [
++            presentController?(textAlertController(context: context, title: ru ? "Выключить режим разработчика?" : "Turn off developer mode?", text: ru ? "Все опции разработчика выключатся, а раздел «Отладка» исчезнет после перезапуска. Включить снова — 5 тапов по версии Umogram." : "Every developer option is turned off and the Debugging section disappears after a relaunch. To turn it back on, tap the Umogram version 5 times.", actions: [
 +                TextAlertAction(type: .genericAction, title: presentationData.strings.Common_Cancel, action: {
 +                    // Redraw the switch back on.
 +                    NotificationCenter.default.post(name: AyuDeveloperSettings.didChangeNotification, object: nil)
@@ -79967,9 +79967,9 @@ index 00000000..36cb3a18
 +            .header(1, 0, ru ? "ИНТЕРФЕЙС" : "INTERFACE"),
 +            toggle(1, .playerDebugOverlay, symbol("ladybug.fill", 0xFF3B30), ru ? "Отладка плеера" : "Player debug overlay", ru ? "Состояние воспроизведения в правом нижнем углу плеера" : "Playback state in the player's bottom-right corner", settings.playerDebugOverlay),
 +            toggle(1, .fpsCounter, symbol("speedometer", 0x34C759), ru ? "Счётчик FPS" : "FPS counter", nil, settings.fpsCounter),
-+            toggle(1, .highlightAyuViews, symbol("square.dashed", 0xAF52DE), ru ? "Подсветить элементы AyuGram" : "Outline AyuGram views", nil, settings.highlightAyuViews),
++            toggle(1, .highlightAyuViews, symbol("square.dashed", 0xAF52DE), ru ? "Подсветить элементы Umogram" : "Outline Umogram views", nil, settings.highlightAyuViews),
 +            .header(2, 10, ru ? "МУЗЫКА" : "MUSIC"),
-+            toggle(2, .forceStockMusicPlayer, symbol("music.note", 0xFF2D55), ru ? "Стандартный плеер Telegram" : "Stock Telegram player", ru ? "Вместо плеера AyuGram" : "Instead of the AyuGram player", settings.forceStockMusicPlayer),
++            toggle(2, .forceStockMusicPlayer, symbol("music.note", 0xFF2D55), ru ? "Стандартный плеер Telegram" : "Stock Telegram player", ru ? "Вместо плеера Umogram" : "Instead of the Umogram player", settings.forceStockMusicPlayer),
 +            toggle(2, .lyricsDiagnostics, symbol("text.quote", 0x5856D6), ru ? "Диагностика текстов" : "Lyrics diagnostics", ru ? "Источник, совпадение и время поиска" : "Source, match score and lookup time", settings.lyricsDiagnostics),
 +            .header(3, 20, ru ? "ПЛАГИНЫ" : "PLUGINS"),
 +            toggle(3, .pluginConsole, symbol("terminal.fill", 0x8E8E93), ru ? "Консоль плагинов" : "Plugin console", ru ? "Вывод print() и ошибки скриптов" : "Script print() output and errors", settings.pluginConsole),
@@ -79978,8 +79978,8 @@ index 00000000..36cb3a18
 +        if settings.pluginConsole {
 +            entries.append(.link(3, AyuDeveloperRow.openPluginConsole.rawValue, symbol("list.bullet.rectangle.fill", 0x007AFF), ru ? "Открыть консоль" : "Open console", ""))
 +        }
-+        entries.append(toggle(3, .allowUnofficialInjectPlugins, symbol("exclamationmark.shield.fill", 0xFF3B30), ru ? "Инжект-плагины не из официального источника" : "Injecting plugins from unofficial sources", ru ? "Разрешить плагины, которые внедряются в приложение, без подписи AyuGram" : "Allow plugins that inject into the app without an AyuGram signature", settings.allowUnofficialInjectPlugins))
-+        entries.append(.info(3, AyuDeveloperRow.unofficialInjectInfo.rawValue, ru ? "⚠️ Такие плагины не проверены AyuGram. Перед установкой каждого будет предупреждение, а вся ответственность за последствия лежит полностью на вас." : "⚠️ Such plugins are not reviewed by AyuGram. Each one shows a warning before installing, and the responsibility for the consequences is entirely yours."))
++        entries.append(toggle(3, .allowUnofficialInjectPlugins, symbol("exclamationmark.shield.fill", 0xFF3B30), ru ? "Инжект-плагины не из официального источника" : "Injecting plugins from unofficial sources", ru ? "Разрешить плагины, которые внедряются в приложение, без подписи Umogram" : "Allow plugins that inject into the app without an Umogram signature", settings.allowUnofficialInjectPlugins))
++        entries.append(.info(3, AyuDeveloperRow.unofficialInjectInfo.rawValue, ru ? "⚠️ Такие плагины не проверены Umogram. Перед установкой каждого будет предупреждение, а вся ответственность за последствия лежит полностью на вас." : "⚠️ Such plugins are not reviewed by Umogram. Each one shows a warning before installing, and the responsibility for the consequences is entirely yours."))
 +        entries.append(contentsOf: [
 +            .header(4, 30, ru ? "ДАННЫЕ" : "DATA"),
 +            toggle(4, .showInternalIds, symbol("number", 0x32ADE6), ru ? "Внутренние ID в меню" : "Internal IDs in menus", nil, settings.showInternalIds),
@@ -80435,7 +80435,7 @@ index 00000000..d46ff0ec
 +    AyuExtraRow(section: 3, id: 22, key: .autoOpenLyrics, symbol: "quote.bubble.fill", color: 0xFF2D55, titleRu: "Сразу показывать текст", titleEn: "Open lyrics automatically", infoRu: "Плеер открывается с текстом песни", infoEn: "The player opens with the lyrics"),
 +    AyuExtraRow(section: 3, id: 23, key: .rememberPlaybackSpeed, symbol: "gauge.with.dots.needle.67percent", color: 0x32ADE6, titleRu: "Запоминать скорость", titleEn: "Remember speed", infoRu: "Последняя скорость музыки при открытии плеера", infoEn: "The last music speed when the player opens"),
 +    AyuExtraRow(section: 3, id: 24, key: .noAutoplayNextVoice, symbol: "waveform.slash", color: 0xAF52DE, titleRu: "Не включать следующее голосовое", titleEn: "Don't play the next voice", infoRu: "Голосовое и кружок останавливаются в конце", infoEn: "Voice and video messages stop at their end"),
-+    AyuExtraRow(section: 3, id: 25, key: .nowPlayingLiveActivity, symbol: "platter.filled.bottom.iphone", color: 0xFF2D55, titleRu: "Трек на экране блокировки", titleEn: "Track on the Lock Screen", infoRu: "Live Activity плеера AyuGram: экран блокировки и Dynamic Island (iOS 16.2+)", infoEn: "AyuGram player Live Activity: Lock Screen and Dynamic Island (iOS 16.2+)"),
++    AyuExtraRow(section: 3, id: 25, key: .nowPlayingLiveActivity, symbol: "platter.filled.bottom.iphone", color: 0xFF2D55, titleRu: "Трек на экране блокировки", titleEn: "Track on the Lock Screen", infoRu: "Live Activity плеера Umogram: экран блокировки и Dynamic Island (iOS 16.2+)", infoEn: "Umogram player Live Activity: Lock Screen and Dynamic Island (iOS 16.2+)"),
 +    AyuExtraRow(section: 4, id: 31, key: .skipOwnDeleted, symbol: "trash.slash.fill", color: 0xFF3B30, titleRu: "Не показывать мои удалённые", titleEn: "Don't show my deleted", infoRu: "Свои удалённые сообщения не сохраняются — только чужие", infoEn: "Your own deleted messages are not kept, only other people's"),
 +    AyuExtraRow(section: 4, id: 32, key: .skipOwnEdited, symbol: "pencil.slash", color: 0xFF9500, titleRu: "Не показывать оригинал моих изменённых", titleEn: "Don't show originals of my edits", infoRu: "Оригинал своих изменённых сообщений не сохраняется", infoEn: "The original text of your own edited messages is not kept"),
 +    AyuExtraRow(section: 4, id: 33, key: .stayAfterBan, symbol: "door.left.hand.open", color: 0x8E8E93, titleRu: "Оставаться в чате после бана", titleEn: "Stay in chat after a ban", infoRu: "Чат не закрывается: название, фото и загруженная история остаются. Новых сообщений не будет — после бана сервер Telegram их не отдаёт", infoEn: "The chat stays open with its title, photo and downloaded history. New messages stop: after a ban Telegram's server no longer serves them"),
@@ -80632,7 +80632,7 @@ index 00000000..700ebc87
 +            try store.update { transform(&$0) }
 +        } catch {
 +            let data = context.sharedContext.currentPresentationData.with { $0 }
-+            presentController?(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
++            presentController?(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
 +        }
 +    }
 +
@@ -80854,7 +80854,7 @@ index e2236c5f..0dee1d96 100644
      case messageHistory = 11
      case mediaArchive = 12
      case localPremium = 21
-@@ -24,24 +27,130 @@ private enum AyuGramRow: Int32 {
+@@ -24,24 +27,132 @@ private enum AyuGramRow: Int32 {
      case interface = 24
      case navigationAndComposer = 25
      case peerSearch = 26
@@ -80886,10 +80886,12 @@ index e2236c5f..0dee1d96 100644
 +    case creditMurkTelegram = 94
 +    case creditNeistvGitHub = 95
 +    case creditNeistvTelegram = 96
++    case creditCrowki = 97
 +
 +    /// Credits rows open their profile pages; t.me links stay inside the app.
 +    var creditURL: String? {
 +        switch self {
++        case .creditCrowki: return "https://t.me/crowcki"
 +        case .creditMurkGitHub: return "https://github.com/murk-sus"
 +        case .creditMurkTelegram: return "https://t.me/asuka4scape_developer"
 +        case .creditNeistvGitHub: return "https://github.com/neistv"
@@ -80920,11 +80922,11 @@ index e2236c5f..0dee1d96 100644
 +        ]))
 +        return
 +    }
-+    present(textAlertController(context: context, title: ru ? "Режим разработчика" : "Developer mode", text: ru ? "Открыть настройки разработчика? Это отладочные функции для тех, кто понимает, что делает. Они появятся в AyuGram после перезапуска приложения." : "Unlock the developer settings? These are debugging options for people who know what they are doing. They appear in AyuGram after the app is relaunched.", actions: [
++    present(textAlertController(context: context, title: ru ? "Режим разработчика" : "Developer mode", text: ru ? "Открыть настройки разработчика? Это отладочные функции для тех, кто понимает, что делает. Они появятся в Umogram после перезапуска приложения." : "Unlock the developer settings? These are debugging options for people who know what they are doing. They appear in Umogram after the app is relaunched.", actions: [
 +        TextAlertAction(type: .genericAction, title: data.strings.Common_Cancel, action: {}),
 +        TextAlertAction(type: .defaultAction, title: ru ? "Включить" : "Unlock", action: {
 +            AyuDeveloperSettings.unlocked = true
-+            present(textAlertController(context: context, title: ru ? "Готово" : "Done", text: ru ? "Перезапустите приложение — в AyuGram появится раздел «Отладка» с настройками разработчика." : "Relaunch the app: AyuGram will show a Debugging section with the developer settings.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
++            present(textAlertController(context: context, title: ru ? "Готово" : "Done", text: ru ? "Перезапустите приложение — в Umogram появится раздел «Отладка» с настройками разработчика." : "Relaunch the app: Umogram will show a Debugging section with the developer settings.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
 +        })
 +    ]))
 +}
@@ -80993,7 +80995,7 @@ index e2236c5f..0dee1d96 100644
              context.sharedContext.applicationBindings.openUrl("https://github.com/dsn2fvhmn4-lgtm/AyuGramm-IOS")
 +        case .officialGroup:
 +            context.sharedContext.openExternalUrl(context: context, urlContext: .generic, url: "https://t.me/jailbreak_iPhone_iPad_android", forceExternal: false, presentationData: context.sharedContext.currentPresentationData.with { $0 }, navigationController: navigation?(), dismissInput: {})
-+        case .creditMurkGitHub, .creditMurkTelegram, .creditNeistvGitHub, .creditNeistvTelegram, .creditOwnerGitHub, .creditOwnerTelegram:
++        case .creditMurkGitHub, .creditMurkTelegram, .creditNeistvGitHub, .creditNeistvTelegram, .creditOwnerGitHub, .creditOwnerTelegram, .creditCrowki:
 +            if let url = row.creditURL {
 +                context.sharedContext.openExternalUrl(context: context, urlContext: .generic, url: url, forceExternal: false, presentationData: context.sharedContext.currentPresentationData.with { $0 }, navigationController: navigation?(), dismissInput: {})
 +            }
@@ -81004,7 +81006,7 @@ index e2236c5f..0dee1d96 100644
          .ghostMode: AyuSettingsIcons.ghost(color: UIColor(rgb: 0x8E5CF7)),
          .ghostModePlus: AyuSettingsIcons.ghost(color: UIColor(rgb: 0x5856D6), plus: true),
          .messageHistory: AyuSettingsIcons.glyph("Item List/Icons/Clock", color: UIColor(rgb: 0xFF9500)),
-@@ -75,42 +191,103 @@ public func ayuGramPreferencesController(context: AccountContext) -> ViewControl
+@@ -75,42 +191,97 @@ public func ayuGramPreferencesController(context: AccountContext) -> ViewControl
          .interface: AyuSettingsIcons.symbol("bubble.left.and.bubble.right.fill", color: UIColor(rgb: 0x32ADE6)),
          .navigationAndComposer: AyuSettingsIcons.symbol("slider.horizontal.3", color: UIColor(rgb: 0x5856D6)),
          .peerSearch: AyuSettingsIcons.symbol("magnifyingglass", color: UIColor(rgb: 0x007AFF)),
@@ -81046,7 +81048,7 @@ index e2236c5f..0dee1d96 100644
          let ru = presentationData.strings.baseLanguageCode.hasPrefix("ru")
 -        let entries: [AyuSectionedEntry] = [
 +        var entries: [AyuSectionedEntry] = [
-             .logo(0, -1, .ayuGram, "AyuGram \(ayuAppVersion())", AyuStrings.justExteragramBasedClientTosBreaking.text(ru)),
+             .logo(0, -1, .ayuGram, "Umogram \(ayuAppVersion())", AyuStrings.justExteragramBasedClientTosBreaking.text(ru)),
 -            .header(1, 0, AyuStrings.ghostEssentials.text(ru)),
 -            link(1, .ghostMode, "Ghost Mode"),
 -            link(1, .ghostModePlus, "Ghost Mode+"),
@@ -81067,10 +81069,6 @@ index e2236c5f..0dee1d96 100644
 +        ] + AyuCategory.allCases.map { category in
 +            AyuSectionedEntry.link(1, category.rawValue, category.icon, category.title(ru), "")
 +        } + [
-+            .header(6, 70, AyuStrings.links.text(ru)),
-+            link(6, .channel, AyuStrings.channel.text(ru), "@neosay1337"),
-+            link(6, .sourceCode, AyuStrings.sourceCode.text(ru), "GitHub"),
-+            link(6, .officialGroup, ru ? "Официальная группа" : "Official group", "@jailbreak_iPhone_iPad_android"),
          ]
 +        // Hidden until unlocked by five taps on the version (and a relaunch).
 +        if AyuDeveloperSettings.unlockedAtLaunch {
@@ -81086,14 +81084,12 @@ index e2236c5f..0dee1d96 100644
 +            link(8, .creditMurkGitHub, "murk-sus", "GitHub"),
 +            link(8, .creditMurkTelegram, "@asuka4scape_developer", "Telegram"),
 +            link(8, .creditNeistvGitHub, "neistv", "GitHub"),
-+            link(8, .creditNeistvTelegram, "@neistv", "Telegram")
++            link(8, .creditNeistvTelegram, "@neistv", "Telegram"),
++            link(8, .creditCrowki, "crowki", "https://t.me/crowcki")
 +        ])
          let data = ItemListPresentationData(presentationData)
          let state = ItemListControllerState(presentationData: data, title: .text(""), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
 -        return (state, (ItemListNodeState(presentationData: data, entries: entries, style: .blocks, animateChanges: false), arguments))
-+        // Opens with the search field tucked under the navigation bar, as in Telegram.
-+        let hideSearch = ListViewScrollToItem(index: 0, position: .top(-navigationBarSearchContentHeight), animated: false, curve: .Default(duration: 0.0), directionHint: .Up)
-+        return (state, (ItemListNodeState(presentationData: data, entries: entries, style: .blocks, initialScrollToItem: hideSearch, animateChanges: false), arguments))
      }
 -    let controller = ItemListController(context: context, state: signal)
 +    let controller = AyuGramSettingsListController(context: context, state: signal)
@@ -81680,7 +81676,7 @@ index 00000000..4c4435cc
 +    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 +        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
 +        guard !self.shown.isEmpty else {
-+            cell.textLabel?.text = self.russian ? "Пока пусто: включите сохранение удалённых и изменённых в AyuGram → История." : "Nothing yet: turn on saving deleted and edited messages in AyuGram → History."
++            cell.textLabel?.text = self.russian ? "Пока пусто: включите сохранение удалённых и изменённых в Umogram → История." : "Nothing yet: turn on saving deleted and edited messages in Umogram → History."
 +            cell.textLabel?.numberOfLines = 0
 +            cell.textLabel?.textColor = .secondaryLabel
 +            cell.selectionStyle = .none
@@ -82826,7 +82822,7 @@ index 515572a7..b57cf074 100644
 +            let lines = self.codePlugins?.lineCount(id: plugin.id) ?? 0
 +            var message = "\(plugin.id) · \(plugin.version) · \(plugin.languageLabel)\n"
 +            if lines > 0 { message += self.russian ? "Строк кода: \(lines)" : "Lines of code: \(lines)" }
-+            if plugin.official { message += self.russian ? "\n✓ Официальный плагин AyuGram" : "\n✓ Official AyuGram plugin" }
++            if plugin.official { message += self.russian ? "\n✓ Официальный плагин Umogram" : "\n✓ Official Umogram plugin" }
 +            if plugin.injects { message += self.russian ? "\nВнедряется в приложение (плеер, тексты…)" : "\nInjects into the app (player, lyrics…)" }
 +            message += plugin.description.isEmpty ? "" : "\n\n" + plugin.description
 +            self.showAlert(title: plugin.name, message: message, actions: [
@@ -83443,8 +83439,8 @@ index 00000000..6bf58dea
 +        }
 +        guard case .loaded = self.state, !self.entries.isEmpty else { return nil }
 +        return self.russian
-+            ? "Плагины из github.com/murk-sus/AyuGramm-Plugins. Каждый файл проверяется по SHA-256 из каталога. Свой плагин можно прислать pull request'ом.\n\nБезопасная зона: обычные плагины (текст, отключение функций) можно ставить откуда угодно. Плагины с меткой «инжект» внедряются в приложение (плеер, тексты песен) и ставятся только с подписью AyuGram (✓ официальный). Неофициальные инжект-плагины можно разрешить в настройках разработчика — тогда вся ответственность лежит полностью на вас."
-+            : "Plugins from github.com/murk-sus/AyuGramm-Plugins. Every file is checked against the catalog's SHA-256. Send your own plugin as a pull request.\n\nSafe zone: ordinary plugins (text, switching features off) can come from anywhere. Plugins marked \"inject\" change the app itself (player, lyrics) and install only when signed by AyuGram (✓ official). Unofficial injecting plugins can be allowed in the developer settings — the responsibility is then entirely yours."
++            ? "Плагины из github.com/murk-sus/AyuGramm-Plugins. Каждый файл проверяется по SHA-256 из каталога. Свой плагин можно прислать pull request'ом.\n\nБезопасная зона: обычные плагины (текст, отключение функций) можно ставить откуда угодно. Плагины с меткой «инжект» внедряются в приложение (плеер, тексты песен) и ставятся только с подписью Umogram (✓ официальный). Неофициальные инжект-плагины можно разрешить в настройках разработчика — тогда вся ответственность лежит полностью на вас."
++            : "Plugins from github.com/murk-sus/AyuGramm-Plugins. Every file is checked against the catalog's SHA-256. Send your own plugin as a pull request.\n\nSafe zone: ordinary plugins (text, switching features off) can come from anywhere. Plugins marked \"inject\" change the app itself (player, lyrics) and install only when signed by Umogram (✓ official). Unofficial injecting plugins can be allowed in the developer settings — the responsibility is then entirely yours."
 +    }
 +
 +    private enum Status {
@@ -83651,7 +83647,7 @@ index 00000000..6bf58dea
 +            message += self.russian ? "\n\nПредыдущая версия \(version) сохранена — её можно вернуть в списке плагинов." : "\n\nThe previous version \(version) is kept and can be restored from the plugin list."
 +        }
 +        if entry.signature != nil {
-+            message += self.russian ? "\n\n✓ Официальный плагин: подпись AyuGram проверяется при установке." : "\n\n✓ Official plugin: the AyuGram signature is checked on install."
++            message += self.russian ? "\n\n✓ Официальный плагин: подпись Umogram проверяется при установке." : "\n\n✓ Official plugin: the Umogram signature is checked on install."
 +        }
 +        if entry.injects == true {
 +            message += self.russian ? "\nВнедряется в приложение (плеер, тексты песен)." : "\nInjects into the app (player, lyrics)."
@@ -85093,9 +85089,9 @@ index 00000000..3cbc9058
 +                    let result = AyuBackup.restore(data: data, password: alert?.textFields?.first?.text ?? "")
 +                    let message: String
 +                    if let result {
-+                        message = ru ? "Настройки восстановлены, плагинов: \(result). Перезапустите AyuGram, чтобы всё применилось." : "Settings restored, plugins: \(result). Restart AyuGram to apply everything."
++                        message = ru ? "Настройки восстановлены, плагинов: \(result). Перезапустите Umogram, чтобы всё применилось." : "Settings restored, plugins: \(result). Restart Umogram to apply everything."
 +                    } else {
-+                        message = ru ? "Неверный пароль или это не бэкап AyuGram." : "Wrong password, or not an AyuGram backup."
++                        message = ru ? "Неверный пароль или это не бэкап Umogram." : "Wrong password, or not an Umogram backup."
 +                    }
 +                    let done = UIAlertController(title: nil, message: message, preferredStyle: .alert)
 +                    done.addAction(UIAlertAction(title: "OK", style: .default))
@@ -85253,14 +85249,14 @@ index 00000000..3cbc9058
 +        entries.append(.link(9, AyuToolsRow.backupMake.rawValue, symbol("lock.doc.fill", 0x34C759), ru ? "Создать зашифрованный бэкап" : "Create an encrypted backup", ""))
 +        entries.append(.link(9, AyuToolsRow.backupRestore.rawValue, symbol("arrow.counterclockwise.circle.fill", 0x007AFF), ru ? "Восстановить из бэкапа" : "Restore from a backup", ""))
 +        entries.append(.link(9, AyuToolsRow.desktopImport.rawValue, symbol("desktopcomputer", 0x5856D6), ru ? "Импорт из AyuGram Desktop" : "Import from AyuGram Desktop", ""))
-+        entries.append(.info(9, AyuToolsRow.backupInfo.rawValue, ru ? "Настройки AyuGram, плагины и сохранённые удалённые/изменённые сообщения в одном файле (AES-GCM). Сохраните его в Файлы или iCloud Drive. Импорт с компьютера: файл ayugram.db из папки данных AyuGram Desktop." : "AyuGram settings, plugins and saved deleted/edited messages in one file (AES-GCM). Save it to Files or iCloud Drive. Import from a computer: ayugram.db from the AyuGram Desktop data folder."))
++        entries.append(.info(9, AyuToolsRow.backupInfo.rawValue, ru ? "Настройки Umogram, плагины и сохранённые удалённые/изменённые сообщения в одном файле (AES-GCM). Сохраните его в Файлы или iCloud Drive. Импорт с компьютера: файл ayugram.db из папки данных AyuGram Desktop." : "Umogram settings, plugins and saved deleted/edited messages in one file (AES-GCM). Save it to Files or iCloud Drive. Import from a computer: ayugram.db from the AyuGram Desktop data folder."))
 +        entries.append(.header(10, AyuToolsRow.proxyHeader.rawValue, ru ? "ПРОКСИ" : "PROXY"))
 +        entries.append(.link(10, AyuToolsRow.proxyFastest.rawValue, symbol("speedometer", 0x34C759), ru ? "Выбрать самый быстрый" : "Pick the fastest", ""))
 +        entries.append(.link(10, AyuToolsRow.proxyImport.rawValue, symbol("doc.on.clipboard.fill", 0x007AFF), ru ? "Импорт из буфера обмена" : "Import from the clipboard", ""))
 +        entries.append(.info(10, AyuToolsRow.proxyInfo.rawValue, ru ? "Пингует все сохранённые прокси и включает самый быстрый. Импорт добавляет все ссылки tg://proxy, t.me/proxy и tg://socks из скопированного текста." : "Pings every saved proxy and turns on the fastest. Import adds every tg://proxy, t.me/proxy and tg://socks link in the copied text."))
 +        entries.append(.header(11, AyuToolsRow.lastfmHeader.rawValue, "LAST.FM"))
 +        entries.append(.link(11, AyuToolsRow.lastfmConnect.rawValue, symbol("music.note.list", 0xD51007), AyuLastFM.isConnected ? (AyuLastFM.username ?? "Last.fm") : (ru ? "Подключить Last.fm" : "Connect Last.fm"), AyuLastFM.isConnected ? (ru ? "вкл." : "on") : ""))
-+        entries.append(.info(11, AyuToolsRow.lastfmInfo.rawValue, ru ? "«Сейчас слушает» и скробблинг треков из плеера AyuGram: трек засчитывается после половины или 4 минут прослушивания." : "Now playing and scrobbling from the AyuGram player: a track counts after half its length or 4 minutes."))
++        entries.append(.info(11, AyuToolsRow.lastfmInfo.rawValue, ru ? "«Сейчас слушает» и скробблинг треков из плеера Umogram: трек засчитывается после половины или 4 минут прослушивания." : "Now playing and scrobbling from the Umogram player: a track counts after half its length or 4 minutes."))
 +        let data = ItemListPresentationData(presentationData)
 +        let state = ItemListControllerState(presentationData: data, title: .text(ru ? "Инструменты" : "Tools"), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
 +        return (state, (ItemListNodeState(presentationData: data, entries: entries, style: .blocks, animateChanges: true), arguments))
@@ -85428,7 +85424,7 @@ index 00000000..49787533
 +                    let count = try AyuSettingsTransfer.importData(Data(contentsOf: url))
 +                    alert(russian ? "Настройки восстановлены" : "Settings restored", russian ? "Значений: \(count). Перезапустите приложение, чтобы применить всё." : "\(count) values. Relaunch the app to apply everything.")
 +                } catch {
-+                    alert(russian ? "Не удалось импортировать" : "Import failed", russian ? "Это не файл настроек AyuGram." : "This is not an AyuGram settings file.")
++                    alert(russian ? "Не удалось импортировать" : "Import failed", russian ? "Это не файл настроек Umogram." : "This is not an Umogram settings file.")
 +                }
 +            })
 +            AyuFontPickerDelegate.current = delegate
@@ -86271,7 +86267,7 @@ index 00000000..df8a621d
 +/// A double tap on the launch splash switches to a decoy: a second, real account when one is
 +/// chosen, otherwise a built-in stand-in Telegram. While the decoy is active every AyuGram feature
 +/// is off and AyuGram is absent from the settings. The next cold start asks for a code: the real
-+/// code returns to the real account; the fake code shows "AyuGram no longer works" and wipes the
++/// code returns to the real account; the fake code shows "Umogram no longer works" and wipes the
 +/// local data on the following launch, before any database is opened.
 +public enum AyuDecoyState {
 +    public enum CodeCheck {
@@ -89005,9 +89001,9 @@ index 73b546fa..94400bbd 100644
          AyuAppIconPreset(name: "AyuGraphite", assetName: "AyuGram/Graphite", title: "My graphite", russianTitle: "Мой графит"),
 +        AyuAppIconPreset(name: "AyuGlassBlue", assetName: "AyuGram/GlassBlue", title: "Glass Blue", russianTitle: "Стекло · синий"),
 +        AyuAppIconPreset(name: "AyuGlassGraphite", assetName: "AyuGram/GlassGraphite", title: "Glass Graphite", russianTitle: "Стекло · графит"),
-         AyuAppIconPreset(name: "AyuOriginalDefault", assetName: "AyuGram/OriginalDefault", title: "AyuGram Default", russianTitle: "AyuGram Default"),
-         AyuAppIconPreset(name: "AyuOriginalAlt", assetName: "AyuGram/OriginalAlt", title: "AyuGram Alt", russianTitle: "AyuGram Alt"),
-         AyuAppIconPreset(name: "AyuOriginalDiscord", assetName: "AyuGram/OriginalDiscord", title: "AyuGram Discord", russianTitle: "AyuGram Discord"),
+         AyuAppIconPreset(name: "AyuOriginalDefault", assetName: "Umogram/OriginalDefault", title: "Umogram Default", russianTitle: "Umogram Default"),
+         AyuAppIconPreset(name: "AyuOriginalAlt", assetName: "Umogram/OriginalAlt", title: "Umogram Alt", russianTitle: "Umogram Alt"),
+         AyuAppIconPreset(name: "AyuOriginalDiscord", assetName: "Umogram/OriginalDiscord", title: "Umogram Discord", russianTitle: "Umogram Discord"),
 diff --git a/submodules/TelegramPresentationData/Sources/AyuCustomizedTheme.swift b/submodules/TelegramPresentationData/Sources/AyuCustomizedTheme.swift
 new file mode 100644
 index 00000000..78f17acc
@@ -89726,9 +89722,9 @@ index 00000000..9b76fb8f
 +    }
 +
 +    private static let labelTemplates: [LabelTemplate] = [
-+        LabelTemplate(kind: "plugins", title: { ru in ru ? "Создатель плагинов" : "Plugin creator" }, text: { _ in "Этот человек официально подтверждён как создатель плагинов для AyuGram" }),
-+        LabelTemplate(kind: "sponsor", title: { ru in ru ? "Спонсор" : "Sponsor" }, text: { _ in "Этот человек — спонсор AyuGram для iOS" }),
-+        LabelTemplate(kind: "developer", title: { ru in ru ? "Разработчик" : "Developer" }, text: { _ in "Этот человек — разработчик AyuGram для iOS" })
++        LabelTemplate(kind: "plugins", title: { ru in ru ? "Создатель плагинов" : "Plugin creator" }, text: { _ in "Этот человек официально подтверждён как создатель плагинов для Umogram" }),
++        LabelTemplate(kind: "sponsor", title: { ru in ru ? "Спонсор" : "Sponsor" }, text: { _ in "Этот человек — спонсор Umogram для iOS" }),
++        LabelTemplate(kind: "developer", title: { ru in ru ? "Разработчик" : "Developer" }, text: { _ in "Этот человек — разработчик Umogram для iOS" })
 +    ]
 +
 +    static func canOpen(context: AccountContext) -> Bool {
@@ -89744,7 +89740,7 @@ index 00000000..9b76fb8f
 +            context.sharedContext.applicationBindings.presentNativeController(controller)
 +        }
 +
-+        let sheet = AyuBadgeEditor.menu(title: name, message: ru ? "Бейдж и надпись AyuGram для iOS" : "AyuGram for iOS badge and label")
++        let sheet = AyuBadgeEditor.menu(title: name, message: ru ? "Бейдж и надпись Umogram для iOS" : "Umogram for iOS badge and label")
 +        sheet.addAction(UIAlertAction(title: ru ? "Выдать бейдж…" : "Give a badge…", style: .default, handler: { _ in
 +            AyuBadgeEditor.chooseEmoji(context: context, controller: controller, peerId: peerId, ru: ru, present: present)
 +        }))
@@ -90238,7 +90234,7 @@ index a16188b5..7dd781c5 100644
 +                if AyuBadgeEditor.canOpen(context: context) {
 +                    let ayuPeerId = user.id.id._internalGetInt64Value()
 +                    let ayuName = EnginePeer.user(user).compactDisplayTitle
-+                    items[currentPeerInfoSection]!.append(PeerInfoScreenActionItem(id: 9300, text: presentationData.strings.baseLanguageCode.hasPrefix("ru") ? "Бейдж AyuGram-IOS…" : "AyuGram-IOS badge…", color: .accent, action: {
++                    items[currentPeerInfoSection]!.append(PeerInfoScreenActionItem(id: 9300, text: presentationData.strings.baseLanguageCode.hasPrefix("ru") ? "Бейдж Umogram-IOS…" : "Umogram-IOS badge…", color: .accent, action: {
 +                        AyuBadgeEditor.present(context: context, peerId: ayuPeerId, name: ayuName, controller: interaction.getController())
 +                    }))
 +                }
@@ -90252,7 +90248,7 @@ index a16188b5..7dd781c5 100644
 +        if AyuBadgeEditor.canOpen(context: context) {
 +            let ayuPeerId = channel.id.id._internalGetInt64Value()
 +            let ayuName = channel.title
-+            items[currentPeerInfoSection]!.append(PeerInfoScreenActionItem(id: 9300, text: presentationData.strings.baseLanguageCode.hasPrefix("ru") ? "Бейдж AyuGram-IOS…" : "AyuGram-IOS badge…", color: .accent, action: {
++            items[currentPeerInfoSection]!.append(PeerInfoScreenActionItem(id: 9300, text: presentationData.strings.baseLanguageCode.hasPrefix("ru") ? "Бейдж Umogram-IOS…" : "Umogram-IOS badge…", color: .accent, action: {
 +                AyuBadgeEditor.present(context: context, peerId: ayuPeerId, name: ayuName, controller: interaction.getController())
 +            }))
 +        }
@@ -90324,10 +90320,10 @@ index 80a7b214..db64b678 100644
 -    items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 100, label: .titleBadge("BETA", UIColor(rgb: 0xFFD60A)), text: "exteraGram", icon: AyuSettingsIcons.exteraLogo, action: {
 -        interaction.openSettings(.ayuGram)
 -    }))
--    items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 101, text: "AyuGram", icon: AyuSettingsIcons.logo, action: {
+-    items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 101, text: "Umogram", icon: AyuSettingsIcons.logo, action: {
 +    // The exteraGram page is part of the AyuGram page (section «Client»).
 +    // Decoy mode: no trace of AyuGram in the settings.
-+    if !AyuDecoyMode.isActive { items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 101, text: "AyuGram", icon: AyuSettingsIcons.logo, action: {
++    if !AyuDecoyMode.isActive { items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 101, text: "Umogram", icon: AyuSettingsIcons.logo, action: {
          interaction.openSettings(.ayuGramPreferences)
 -    }))
 +    })) }
@@ -91992,12 +91988,12 @@ index ed6a26a2..af1c48f9 100644
 +        guard let storage = self.ayuStartupNotice else { return }
          self.ayuStartupNotice = nil
          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
--            let alert = UIAlertController(title: "AyuGram", message: message, preferredStyle: .alert)
+-            let alert = UIAlertController(title: "Umogram", message: message, preferredStyle: .alert)
 -            alert.addAction(UIAlertAction(title: "OK", style: .default))
 +            let ru = Locale.preferredLanguages.first?.hasPrefix("ru") == true
 +            let message = ru
-+                ? "В этой установке AyuGram использует отдельное хранилище. Может потребоваться вход в аккаунт. Виджеты, расширения и встроенный кошелёк в этом режиме недоступны."
-+                : "This installation of AyuGram uses separate storage. You may need to sign in. Widgets, extensions and the built-in wallet are unavailable in this mode."
++                ? "В этой установке Umogram использует отдельное хранилище. Может потребоваться вход в аккаунт. Виджеты, расширения и встроенный кошелёк в этом режиме недоступны."
++                : "This installation of Umogram uses separate storage. You may need to sign in. Widgets, extensions and the built-in wallet are unavailable in this mode."
 +            let alert = UIAlertController(title: ru ? "Режим совместимости" : "Compatibility mode", message: message, preferredStyle: .alert)
 +            alert.addAction(UIAlertAction(title: ru ? "Понятно" : "Got it", style: .default, handler: { _ in
 +                // Persist only after an explicit acknowledgement, never merely on launch.
@@ -92021,7 +92017,7 @@ index ed6a26a2..af1c48f9 100644
          }
          self.window = window
          self.nativeWindow = window
-+        // AyuGram "Block screenshots in AyuGram": screenshots and recordings show an empty screen.
++        // AyuGram "Block screenshots in Umogram": screenshots and recordings show an empty screen.
 +        let ayuContainerLayer = hostView.containerView.layer
 +        setLayerDisableScreenshots(ayuContainerLayer, AyuExtras.isOn(.blockScreenshots))
 +        let _ = NotificationCenter.default.addObserver(forName: AyuExtras.didChangeNotification, object: nil, queue: .main, using: { _ in
@@ -92515,7 +92511,7 @@ index 00000000..a6033b8f
 +                }
 +            })
 +        }
-+        let sheet = UIAlertController(title: ru ? "Добро пожаловать в AyuGram" : "Welcome to AyuGram", message: ru ? "Выберите начальные настройки. Всё можно поменять в AyuGram." : "Pick a starting setup. Everything can be changed in AyuGram.", preferredStyle: .alert)
++        let sheet = UIAlertController(title: ru ? "Добро пожаловать в Umogram" : "Welcome to Umogram", message: ru ? "Выберите начальные настройки. Всё можно поменять в Umogram." : "Pick a starting setup. Everything can be changed in Umogram.", preferredStyle: .alert)
 +        sheet.addAction(UIAlertAction(title: ru ? "🕵️ Максимум приватности" : "🕵️ Maximum privacy", style: .default, handler: { _ in apply(0) }))
 +        sheet.addAction(UIAlertAction(title: ru ? "🖥 Как AyuGram Desktop" : "🖥 Like AyuGram Desktop", style: .default, handler: { _ in apply(1) }))
 +        sheet.addAction(UIAlertAction(title: ru ? "🧘 Минимализм" : "🧘 Minimalism", style: .default, handler: { _ in apply(2) }))
@@ -92534,21 +92530,21 @@ index 00000000..a6033b8f
 +        guard let previous, previous != version, !AyuDecoyMode.isActive else { return }
 +        let ru = sharedContext.currentPresentationData.with { $0 }.strings.baseLanguageCode.hasPrefix("ru")
 +        let lines = ru ? [
-+            "🎭 Фейк-режим и заставка с иконкой AyuGram",
++            "🎭 Фейк-режим и заставка с иконкой Umogram",
 +            "🔒 Блокировка чатов по Face ID и скрытые чаты",
 +            "↩️ Отмена отправки, лента удалённых с поиском и разницей правок",
 +            "🎵 Музыка из плеера в профиль",
 +            "🗣 Расшифровка голосовых на устройстве, «Что я пропустил» на ИИ",
 +            "🧩 Плагины: сеть, сообщения, команды, экраны, облачная сборка и SDK на 7 языках"
 +        ] : [
-+            "🎭 Decoy mode and the AyuGram splash",
++            "🎭 Decoy mode and the Umogram splash",
 +            "🔒 Face ID chat lock and hidden chats",
 +            "↩️ Undo send, a deleted-messages feed with search and edit diffs",
 +            "🎵 Music from the player to your profile",
 +            "🗣 On-device voice transcription, \"What did I miss\" with AI",
 +            "🧩 Plugins: network, messages, commands, pages, cloud builds and SDKs in 7 languages"
 +        ]
-+        let alert = UIAlertController(title: (ru ? "Что нового в AyuGram " : "What's new in AyuGram ") + version, message: lines.joined(separator: "\n"), preferredStyle: .alert)
++        let alert = UIAlertController(title: (ru ? "Что нового в Umogram " : "What's new in Umogram ") + version, message: lines.joined(separator: "\n"), preferredStyle: .alert)
 +        alert.addAction(UIAlertAction(title: ru ? "Отлично" : "Great", style: .default))
 +        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
 +            sharedContext.applicationBindings.presentNativeController(alert)
@@ -92867,7 +92863,7 @@ index c1af8a74..f908a716 100644
 +                    if !isLocked, inAppSettings.displayNameOnLockscreen, peerId.namespace != Namespaces.Peer.SecretChat, let peer = message.peers[peerId] {
                          content.title = EnginePeer(peer).displayTitle(strings: presentationData.strings, displayOrder: presentationData.nameDisplayOrder)
                      } else {
-                         content.title = "AyuGram"
+                         content.title = "Umogram"
                      }
                      // Secret chats, a locked app or disabled previews never put message text on the lock screen.
 -                    let showsText = category.displayPreviews && !isLocked && peerId.namespace != Namespaces.Peer.SecretChat
@@ -93500,7 +93496,7 @@ index 00000000..36c1f8b3
 +        icon.transform = CGAffineTransform(scaleX: 0.55, y: 0.55).translatedBy(x: 0.0, y: 40.0)
 +        splash.addSubview(icon)
 +        let title = UILabel()
-+        title.text = "AyuGram"
++        title.text = "Umogram"
 +        title.font = UIFont.systemFont(ofSize: 22.0, weight: .semibold)
 +        title.textColor = UIColor.label
 +        title.sizeToFit()
@@ -93647,7 +93643,7 @@ index 00000000..36c1f8b3
 +    }
 +}
 +
-+/// The "AyuGram no longer works" screen; it stays until the app is reinstalled.
++/// The "Umogram no longer works" screen; it stays until the app is reinstalled.
 +final class AyuBrokenView: UIView {
 +    override init(frame: CGRect) {
 +        super.init(frame: frame)
@@ -93655,12 +93651,12 @@ index 00000000..36c1f8b3
 +        let icon = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 54.0, weight: .regular)))
 +        icon.tintColor = UIColor.systemOrange
 +        let title = UILabel()
-+        title.text = "Извините, AyuGram больше не работает"
++        title.text = "Извините, Umogram больше не работает"
 +        title.font = UIFont.systemFont(ofSize: 21.0, weight: .semibold)
 +        title.textAlignment = .center
 +        title.numberOfLines = 0
 +        let text = UILabel()
-+        text.text = "Данные приложения повреждены. Чтобы исправить, полностью удалите AyuGram и установите его заново."
++        text.text = "Данные приложения повреждены. Чтобы исправить, полностью удалите Umogram и установите его заново."
 +        text.font = UIFont.systemFont(ofSize: 15.0)
 +        text.textColor = UIColor.secondaryLabel
 +        text.textAlignment = .center
@@ -94357,7 +94353,7 @@ index 00000000..e7cca1c1
 +        let visible = !isLocked && previews && inApp.displayPreviews && inApp.displayNameOnLockscreen
 +        let label = kind == "deleted" ? (ru ? "Сообщение удалено" : "Message deleted") : (ru ? "Сообщение изменено" : "Message edited")
 +        let content = UNMutableNotificationContent()
-+        content.title = visible ? peer.debugDisplayTitle + " · " + label : "AyuGram"
++        content.title = visible ? peer.debugDisplayTitle + " · " + label : "Umogram"
 +        content.body = visible ? (original.isEmpty ? (ru ? "Медиа" : "Media") : String(original.prefix(300))) : label
 +        content.sound = sound && !settings.isQuiet() ? .default : nil
 +        content.threadIdentifier = settings.groupByChat ? "\(context.account.id.int64)_\(rawPeerId)" : ""
@@ -94399,7 +94395,7 @@ index 00000000..d43d2f38
 +
 +        func text(_ russian: Bool) -> String {
 +            switch self {
-+            case .notAuthorized: return russian ? "Разрешите распознавание речи: Настройки → AyuGram." : "Allow speech recognition in Settings → AyuGram."
++            case .notAuthorized: return russian ? "Разрешите распознавание речи: Настройки → Umogram." : "Allow speech recognition in Settings → Umogram."
 +            case .unsupportedLanguage: return russian ? "Распознавание этого языка недоступно на устройстве." : "Speech recognition is not available for this language."
 +            case .conversion: return russian ? "Не удалось подготовить аудио." : "The audio could not be prepared."
 +            case let .recognition(message): return (russian ? "Не удалось распознать: " : "Recognition failed: ") + message
@@ -97449,7 +97445,7 @@ index 00000000..7c1fe98b
 +
 +    private static func missingKey(_ context: AccountContext, _ what: String) {
 +        let ru = context.sharedContext.currentPresentationData.with { $0 }.strings.baseLanguageCode.hasPrefix("ru")
-+        present(context, title: what, message: ru ? "Добавьте свой ключ API: AyuGram → Инструменты." : "Add your API key: AyuGram → Tools.")
++        present(context, title: what, message: ru ? "Добавьте свой ключ API: Umogram → Инструменты." : "Add your API key: Umogram → Tools.")
 +    }
 +
 +    // MARK: VirusTotal
@@ -97540,7 +97536,7 @@ index 00000000..7c1fe98b
 +                if status == 200, let stats = stats(data) {
 +                    message = name + "\n\n" + verdict(stats, ru: ru)
 +                } else if status == 404 {
-+                    message = name + "\n\n" + (ru ? "VirusTotal ещё не видел этот файл. AyuGram не загружает ваши файлы — проверить можно на virustotal.com вручную." : "VirusTotal has not seen this file. AyuGram never uploads your files; you can check it on virustotal.com yourself.")
++                    message = name + "\n\n" + (ru ? "VirusTotal ещё не видел этот файл. Umogram не загружает ваши файлы — проверить можно на virustotal.com вручную." : "VirusTotal has not seen this file. Umogram never uploads your files; you can check it on virustotal.com yourself.")
 +                } else if status == 401 {
 +                    message = ru ? "Неверный ключ API." : "Invalid API key."
 +                } else {
@@ -99287,7 +99283,7 @@ index 00000000..df7c9885
 +                await activity.update(ActivityContent(state: state, staleDate: nil))
 +            }
 +        } else {
-+            current = try? Activity.request(attributes: AyuNowPlayingAttributes(appName: "AyuGram"), content: ActivityContent(state: state, staleDate: nil), pushType: nil)
++            current = try? Activity.request(attributes: AyuNowPlayingAttributes(appName: "Umogram"), content: ActivityContent(state: state, staleDate: nil), pushType: nil)
 +        }
 +    }
 +
@@ -99353,7 +99349,7 @@ index 00000000..86d14d68
 +import AccountContext
 +import LegacyChatHeaderPanelComponent
 +
-+/// The AyuGram team label under a chat's title: "… — confirmed by the AyuGram for iOS team",
++/// The AyuGram team label under a chat's title: "… — confirmed by the Umogram for iOS team",
 +/// from the signed list kept with @ayugram_dev_settings_bot. Its own AyuGram icon keeps it apart
 +/// from Telegram's official verification.
 +final class AyuTeamVerifiedTitlePanelNode: ChatTitleAccessoryPanelNode {
@@ -100117,7 +100113,7 @@ index 34bbb294..7bc35e9d 100644
              self.ayuGhostBarButton.image = enabled ? ayuGhostNavigationImage : ayuGhostNavigationOffImage
              self.ayuGhostBarButton.target = self
              self.ayuGhostBarButton.action = #selector(self.ayuGhostButtonPressed)
--            self.ayuGhostBarButton.accessibilityLabel = enabled ? "Disable AyuGram Ghost Mode" : "Enable AyuGram Ghost Mode"
+-            self.ayuGhostBarButton.accessibilityLabel = enabled ? "Disable Umogram Ghost Mode" : "Enable Umogram Ghost Mode"
 -            self.ayuGhostBarButton.accessibilityValue = enabled ? "On" : "Off"
 +            let ru = presentationInterfaceState.strings.baseLanguageCode.hasPrefix("ru")
 +            self.ayuGhostBarButton.accessibilityLabel = enabled ? (ru ? "Выключить призрак в этом чате" : "Disable Ghost Mode in this chat") : (ru ? "Включить призрак в этом чате" : "Enable Ghost Mode in this chat")
@@ -100312,7 +100308,7 @@ index a84cdf21..d5d0a4d8 100644
              // Plugins belong to exteraGram: this opens the enabled plugins' actions for this chat.
              if context.account.network.ayuGhostMode.current.plugins.installed.contains(where: { $0.enabled }), chatPresentationInterfaceState.chatLocation.peerId == message.id.peerId, message.id.peerId.namespace != Namespaces.Peer.SecretChat, EngineMessage(message).adAttribute == nil {
 -                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "exteraGram · Плагины" : "exteraGram · Plugins", icon: { theme in
-+                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "AyuGram · Плагины" : "AyuGram · Plugins", icon: { theme in
++                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "Umogram · Плагины" : "Umogram · Plugins", icon: { theme in
                      return UIImage(systemName: "puzzlepiece.fill")?.withTintColor(theme.contextMenu.primaryColor, renderingMode: .alwaysOriginal)
                  }, action: { controller, _ in
                      controller?.dismiss(completion: {

@@ -204,7 +204,7 @@ index fdc47f0..e793034 100644
 +        defer { if access { url.stopAccessingSecurityScopedResource() } }
 +        if let data = try? Data(contentsOf: url, options: .mappedIfSafe), data.count <= 1_048_576,
 +           let source = String(data: data, encoding: .utf8), self.playerView?.importLyrics(source) == true { return }
-+        let alert = UIAlertController(title: "AyuGram", message: "Не удалось прочитать тайминги. Поддерживаются LRC, Enhanced LRC и Lyricsfile 1.0.", preferredStyle: .alert)
++        let alert = UIAlertController(title: "Umogram", message: "Не удалось прочитать тайминги. Поддерживаются LRC, Enhanced LRC и Lyricsfile 1.0.", preferredStyle: .alert)
 +        alert.addAction(UIAlertAction(title: "OK", style: .default))
 +        self.context.sharedContext.applicationBindings.presentNativeController(alert)
 +    }

@@ -16,7 +16,7 @@ index 1ac8279b..aec065e7 100644
      """
      <key>CFBundleDisplayName</key>
 -    <string>Telegram</string>
-+    <string>AyuGram</string>
++    <string>Umogram</string>
      """
  )
  
@@ -25,7 +25,7 @@ index 1ac8279b..aec065e7 100644
      <string>en</string>
      <key>CFBundleDisplayName</key>
 -    <string>Telegram</string>
-+    <string>AyuGram</string>
++    <string>Umogram</string>
      <key>CFBundleIdentifier</key>
      <string>{telegram_bundle_id}</string>
      <key>CFBundleName</key>
@@ -19949,7 +19949,7 @@ index 00000000..d9e1302c
 +          ],
 +          "glass": false,
 +          "image-name": "AyuGram.png",
-+          "name": "AyuGram iOS"
++          "name": "Umogram iOS"
 +        }
 +      ],
 +      "lighting": "combined",
@@ -42146,7 +42146,7 @@ index 00000000..fab8aefc
 +          ],
 +          "glass": false,
 +          "image-name": "AyuGram.png",
-+          "name": "AyuGram iOS"
++          "name": "Umogram iOS"
 +        }
 +      ],
 +      "lighting": "combined",
@@ -42220,7 +42220,7 @@ index 00000000..978e9134
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Alt",
++          "name": "Umogram Alt",
 +          "position": {
 +            "scale": 0.75,
 +            "translation-in-points": [
@@ -42363,7 +42363,7 @@ index 00000000..2e8b07b8
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Bard",
++          "name": "Umogram Bard",
 +          "position": {
 +            "scale": 0.75,
 +            "translation-in-points": [
@@ -42496,7 +42496,7 @@ index 00000000..902c070f
 +          ],
 +          "glass": false,
 +          "image-name": "app.png",
-+          "name": "AyuGram Chibi",
++          "name": "Umogram Chibi",
 +          "position": {
 +            "scale": 3.5,
 +            "translation-in-points": [
@@ -42862,7 +42862,7 @@ index 00000000..1e3b07e4
 +          ],
 +          "glass": false,
 +          "image-name": "app.png",
-+          "name": "AyuGram Chibi2",
++          "name": "Umogram Chibi2",
 +          "position": {
 +            "scale": 3.33,
 +            "translation-in-points": [
@@ -42943,7 +42943,7 @@ index 00000000..ec40b3a4
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Default",
++          "name": "Umogram Default",
 +          "position": {
 +            "scale": 0.75,
 +            "translation-in-points": [
@@ -43024,7 +43024,7 @@ index 00000000..effda94c
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Discord",
++          "name": "Umogram Discord",
 +          "position": {
 +            "scale": 0.75,
 +            "translation-in-points": [
@@ -43121,7 +43121,7 @@ index 00000000..f5f63237
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Extera",
++          "name": "Umogram Extera",
 +          "position": {
 +            "scale": 0.9,
 +            "translation-in-points": [
@@ -43192,7 +43192,7 @@ index 00000000..aea1f8b2
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Extera2",
++          "name": "Umogram Extera2",
 +          "position": {
 +            "scale": 0.95,
 +            "translation-in-points": [
@@ -43271,7 +43271,7 @@ index 00000000..5125c248
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Nothing",
++          "name": "Umogram Nothing",
 +          "position": {
 +            "scale": 0.75,
 +            "translation-in-points": [
@@ -43352,7 +43352,7 @@ index 00000000..e725fa45
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Spotify",
++          "name": "Umogram Spotify",
 +          "position": {
 +            "scale": 0.9,
 +            "translation-in-points": [
@@ -43593,7 +43593,7 @@ index 00000000..724a406f
 +          ],
 +          "glass": false,
 +          "image-name": "app.png",
-+          "name": "AyuGram Win95",
++          "name": "Umogram Win95",
 +          "position": {
 +            "scale": 3.5,
 +            "translation-in-points": [
@@ -43718,7 +43718,7 @@ index 00000000..b530fda1
 +          ],
 +          "glass": false,
 +          "image-name": "app.svg",
-+          "name": "AyuGram Yaplus",
++          "name": "Umogram Yaplus",
 +          "position": {
 +            "scale": 0.75,
 +            "translation-in-points": [
@@ -66066,7 +66066,7 @@ index b1143f63..93021774 100644
 -          }
 +          "glass": false,
 +          "image-name": "AyuGram.png",
-+          "name": "AyuGram iOS"
++          "name": "Umogram iOS"
          }
        ],
 -      "shadow" : {
@@ -66189,7 +66189,7 @@ index 00000000..c9327353
 +    private var result = ""
 +    private var status = ""
 +    private var ru: Bool { return self.context.sharedContext.currentPresentationData.with { $0 }.strings.baseLanguageCode.hasPrefix("ru") }
-+    init(context: AccountContext, text: String) { self.context = context; self.text = text; super.init(style: .insetGrouped); self.title = "AyuGram · Translate" }
++    init(context: AccountContext, text: String) { self.context = context; self.text = text; super.init(style: .insetGrouped); self.title = "Umogram · Translate" }
 +    required init?(coder: NSCoder) { return nil }
 +    deinit { self.request.dispose() }
 +    override func viewDidLoad() {
@@ -66272,7 +66272,7 @@ index 00000000..a97df50f
 +    private var status = ""
 +    private var directory: URL?
 +    private var ru: Bool { return self.context.sharedContext.currentPresentationData.with { $0 }.strings.baseLanguageCode.hasPrefix("ru") }
-+    init(context: AccountContext, peerId: EnginePeer.Id) { self.context = context; self.peerId = peerId; super.init(style: .insetGrouped); self.title = "AyuGram · Export" }
++    init(context: AccountContext, peerId: EnginePeer.Id) { self.context = context; self.peerId = peerId; super.init(style: .insetGrouped); self.title = "Umogram · Export" }
 +    required init?(coder: NSCoder) { return nil }
 +    deinit { self.request.dispose(); if let directory = self.directory { try? FileManager.default.removeItem(at: directory) } }
 +    override func viewDidLoad() {
@@ -66554,7 +66554,7 @@ index 00000000..30e4a8a2
 +}
 +
 +static PyMethodDef ayu_methods[] = {
-+    {"native", ayu_native, METH_VARARGS, "AyuGram host bridge"},
++    {"native", ayu_native, METH_VARARGS, "Umogram host bridge"},
 +    {NULL, NULL, 0, NULL}
 +};
 +
@@ -68739,7 +68739,7 @@ index 00000000..e9b8bba6
 +                self.changing = false; self.navigationItem.leftBarButtonItem = nil
 +                if success { self.selected = choice.name; self.collectionView.reloadData() }
 +                else {
-+                    let alert = UIAlertController(title: "AyuGram", message: self.russian ? "iOS не применила иконку. Текущий выбор сохранён. Проверь способ установки и повтори попытку." : "iOS did not apply the icon. The current selection was retained. Check the installation method and try again.", preferredStyle: .alert)
++                    let alert = UIAlertController(title: "Umogram", message: self.russian ? "iOS не применила иконку. Текущий выбор сохранён. Проверь способ установки и повтори попытку." : "iOS did not apply the icon. The current selection was retained. Check the installation method and try again.", preferredStyle: .alert)
 +                    alert.addAction(UIAlertAction(title: "OK", style: .default)); self.present(alert, animated: true)
 +                }
 +            }
@@ -68932,7 +68932,7 @@ index 00000000..c6bbae2e
 +        } else {
 +            text = AyuStrings.chatAppearanceCouldNotSaved.text(ru)
 +        }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: text, actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: text, actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -69255,7 +69255,7 @@ index 00000000..6daf4d3b
 +                return AyuOptionsChatPreview(theme: presentationData.theme, wallpaper: presentationData.chatWallpaper, fontSize: presentationData.chatFontSize, corners: presentationData.chatBubbleCorners, dateTimeFormat: presentationData.dateTimeFormat, nameOrder: presentationData.nameDisplayOrder, messages: messages, overlay: overlay)
 +            }
 +            // The same alert the chat shows before a GIF goes out (ChatControllerAyuMediaSending).
-+            entries.append(.chat(1, 11, chatPreview([ChatPreviewMessageItem(outgoing: false, reply: nil, text: AyuStrings.sendSomethingFunny.text(ru), nameColor: .preset(.blue), backgroundEmojiId: nil)], .alert(title: "AyuGram", text: AyuStrings.sendGif.text(ru), cancel: presentationData.strings.Common_Cancel, confirm: AyuStrings.send.text(ru)))))
++            entries.append(.chat(1, 11, chatPreview([ChatPreviewMessageItem(outgoing: false, reply: nil, text: AyuStrings.sendSomethingFunny.text(ru), nameColor: .preset(.blue), backgroundEmojiId: nil)], .alert(title: "Umogram", text: AyuStrings.sendGif.text(ru), cancel: presentationData.strings.Common_Cancel, confirm: AyuStrings.send.text(ru)))))
 +            entries.append(.toggle(2, 20, nil, AyuStrings.previewVoiceRecordings.text(ru), media.previewVoice))
 +            entries.append(.chat(2, 21, chatPreview([ChatPreviewMessageItem(outgoing: true, reply: nil, text: "", nameColor: .preset(.blue), backgroundEmojiId: nil, ayuMedia: .voice)], nil)))
 +            entries.append(.toggle(3, 30, nil, AyuStrings.previewVideoNotes.text(ru), media.previewRound))
@@ -69328,7 +69328,7 @@ index 00000000..6daf4d3b
 +    }
 +    presentError = { [weak controller] message in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: message, actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: message, actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    if regex, let pattern = initialPatterns?.last {
 +        Queue.mainQueue().after(0.4) {
@@ -69451,7 +69451,7 @@ index 00000000..08745cb8
 +    presentError = { [weak controller] in
 +        let presentationData = context.sharedContext.currentPresentationData.with { $0 }
 +        let isRussian = presentationData.strings.baseLanguageCode.hasPrefix("ru")
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: AyuStrings.settingsCouldNotSavedChangeWas.text(isRussian), actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: AyuStrings.settingsCouldNotSavedChangeWas.text(isRussian), actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -69537,7 +69537,7 @@ index 00000000..786127bd
 +    |> map { presentationData -> (ItemListControllerState, (ItemListNodeState, Any)) in
 +        let ru = presentationData.strings.baseLanguageCode.hasPrefix("ru")
 +        let entries: [AyuSectionedEntry] = [
-+            .logo(0, -1, .ayuGram, "AyuGram \(ayuAppVersion())", AyuStrings.justExteragramBasedClientTosBreaking.text(ru)),
++            .logo(0, -1, .ayuGram, "Umogram \(ayuAppVersion())", AyuStrings.justExteragramBasedClientTosBreaking.text(ru)),
 +            .header(1, 0, AyuStrings.ghostEssentials.text(ru)),
 +            link(1, .ghostMode, "Ghost Mode"),
 +            link(1, .ghostModePlus, "Ghost Mode+"),
@@ -69668,7 +69668,7 @@ index 00000000..786127bd
 +    presentController = { [weak controller] in controller?.present($0, in: .window(.root)) }
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -69733,7 +69733,7 @@ index 00000000..786127bd
 +    let controller = ItemListController(context: context, state: signal)
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -69755,7 +69755,7 @@ index 00000000..786127bd
 +        guard id == 10 else { return }
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
 +        let ru = data.strings.baseLanguageCode.hasPrefix("ru")
-+        present?(textAlertController(context: context, title: "AyuGram", text: AyuStrings.clearEntireLocalArchiveAccount.text(ru), actions: [
++        present?(textAlertController(context: context, title: "Umogram", text: AyuStrings.clearEntireLocalArchiveAccount.text(ru), actions: [
 +            TextAlertAction(type: .genericAction, title: data.strings.Common_Cancel, action: {}),
 +            TextAlertAction(type: .destructiveAction, title: data.strings.Common_OK, action: {
 +                let _ = context.engine.messages.updateAyuMessageHistory(clear: true).startStandalone()
@@ -69867,7 +69867,7 @@ index 00000000..786127bd
 +            entries = [.info(0, AyuStrings.entryWasClearedHasExpired.text(ru))]
 +        }
 +        let data = ItemListPresentationData(presentationData)
-+        let state = ItemListControllerState(presentationData: data, title: .text("AyuGram"), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
++        let state = ItemListControllerState(presentationData: data, title: .text("Umogram"), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
 +        return (state, (ItemListNodeState(presentationData: data, entries: entries, style: .blocks, animateChanges: false), AyuSettingsArguments(open: { _ in }, update: { _, _ in }, record: { _ in }, context: context, attachment: { openAttachment?($0) })))
 +    }
 +    let controller = ItemListController(context: context, state: signal)
@@ -69878,7 +69878,7 @@ index 00000000..786127bd
 +            guard let controller else { return }
 +            guard let url else {
 +                let data = context.sharedContext.currentPresentationData.with { $0 }
-+                controller.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Файл отсутствует в локальном архиве." : "This file is no longer available in the local archive.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++                controller.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Файл отсутствует в локальном архиве." : "This file is no longer available in the local archive.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +                return
 +            }
 +            let activity = UIActivityViewController(activityItems: [url], applicationActivities: nil)
@@ -70136,11 +70136,11 @@ index 00000000..8105fdc9
 +    let controller = ItemListController(context: context, state: signal)
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить список скрытых сообщений." : "The hidden-message list could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить список скрытых сообщений." : "The hidden-message list could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    confirmAll = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Убрать все отметки скрытия этого аккаунта? Это не восстанавливает сообщения, удалённые на сервере." : "Remove all local hiding marks for this account? This does not recover messages deleted on the server.", actions: [
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Убрать все отметки скрытия этого аккаунта? Это не восстанавливает сообщения, удалённые на сервере." : "Remove all local hiding marks for this account? This does not recover messages deleted on the server.", actions: [
 +            TextAlertAction(type: .genericAction, title: data.strings.Common_Cancel, action: {}),
 +            TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {
 +                do { try store.update { $0.hiddenMessages.restoreAll() } }
@@ -71108,7 +71108,7 @@ index 00000000..22fd855c
 +            }
 +            result.append(character)
 +        }
-+        return result.isEmpty ? "AyuGram" : result
++        return result.isEmpty ? "Umogram" : result
 +    }
 +
 +    func start() {
@@ -71514,7 +71514,7 @@ index 00000000..c4eb6ae4
 +        return cell
 +    }
 +    private func showError() {
-+        let alert = UIAlertController(title: "AyuGram", message: self.russian ? "Не удалось применить изменения плагина. Предыдущие настройки сохранены." : "Plugin changes could not be applied. Previous settings were retained.", preferredStyle: .alert)
++        let alert = UIAlertController(title: "Umogram", message: self.russian ? "Не удалось применить изменения плагина. Предыдущие настройки сохранены." : "Plugin changes could not be applied. Previous settings were retained.", preferredStyle: .alert)
 +        alert.addAction(UIAlertAction(title: "OK", style: .default)); self.present(alert, animated: true)
 +    }
 +    @objc private func toggle(_ toggle: UISwitch) {
@@ -71972,7 +71972,7 @@ index 00000000..68765ad1
 +        }
 +    }
 +    private func error(_ error: Error) {
-+        let message = self.russian ? "Этот плагин пока не поддерживается в AyuGram для iOS. Установленные плагины не изменились." : "This plugin is not supported by AyuGram for iOS yet. Installed plugins were not changed."
++        let message = self.russian ? "Этот плагин пока не поддерживается в Umogram для iOS. Установленные плагины не изменились." : "This plugin is not supported by Umogram for iOS yet. Installed plugins were not changed."
 +        let detail = (error as? LocalizedError)?.errorDescription
 +        self.alert(title: self.russian ? "Ошибка плагина" : "Plugin error", message: message + (detail.map { "\n\n" + String($0.prefix(512)) } ?? ""))
 +    }
@@ -72099,7 +72099,7 @@ index 00000000..68765ad1
 +                        return
 +                    }
 +                    guard let plugin = card.plugin else {
-+                        self.alert(title: card.name, message: self.russian ? "Этого плагина нет в вашей версии AyuGram. Обновите приложение." : "This plugin is not in your version of AyuGram. Update the app.")
++                        self.alert(title: card.name, message: self.russian ? "Этого плагина нет в вашей версии Umogram. Обновите приложение." : "This plugin is not in your version of Umogram. Update the app.")
 +                        return
 +                    }
 +                    let installed = AyuNativePlugins.isInstalled(plugin)
@@ -72454,9 +72454,9 @@ index 00000000..f41ddcff
 +                        $0.messageShot = AyuMessageShotSettings()
 +                        $0.reactionDisplay = AyuReactionDisplaySettings()
 +                    }
-+                    present?(textAlertController(context: context, title: "AyuGram", text: AyuStrings.preferencesHaveBeenReset.text(ru), actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
++                    present?(textAlertController(context: context, title: "Umogram", text: AyuStrings.preferencesHaveBeenReset.text(ru), actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
 +                } catch {
-+                    present?(textAlertController(context: context, title: "AyuGram", text: AyuStrings.settingsCouldNotReset.text(ru), actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
++                    present?(textAlertController(context: context, title: "Umogram", text: AyuStrings.settingsCouldNotReset.text(ru), actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]))
 +                }
 +            })]))
 +        case .deleteAccount:
@@ -72544,7 +72544,7 @@ index 00000000..f41ddcff
 +func ayuCategoryRows(category: Int, ru: Bool) -> (title: String, rows: [(Int32, String)]) {
 +    switch category {
 +    case 0:
-+        return ("AyuGram", [(0, "Ghost Mode"), (50, "Ghost Mode+"), (1, AyuStrings.messageHistory.text(ru)), (53, AyuStrings.mediaArchive.text(ru))])
++        return ("Umogram", [(0, "Ghost Mode"), (50, "Ghost Mode+"), (1, AyuStrings.messageHistory.text(ru)), (53, AyuStrings.mediaArchive.text(ru))])
 +    case 2:
 +        return (AyuStrings.general.text(ru), [(51, AyuStrings.translationProviders.text(ru)), (2, AyuStrings.sendingOptions.text(ru)), (5, AyuStrings.interface.text(ru)), (6, AyuStrings.messageMenu.text(ru))])
 +    case 3:
@@ -72693,7 +72693,7 @@ index 00000000..f41ddcff
 +    push = { [weak controller] in controller?.push($0) }
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -72802,7 +72802,7 @@ index 00000000..f41ddcff
 +    push = { [weak controller] in controller?.push($0) }
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -72844,7 +72844,7 @@ index 00000000..f41ddcff
 +    let controller = ItemListController(context: context, state: signal)
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить показ реакций." : "Reaction display settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить показ реакций." : "Reaction display settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -73002,7 +73002,7 @@ index 00000000..f41ddcff
 +    let controller = ItemListController(context: context, state: signal)
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки." : "Settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -73051,7 +73051,7 @@ index 00000000..f41ddcff
 +    let controller = ItemListController(context: context, state: signal)
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки интерфейса." : "Interface settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Не удалось сохранить настройки интерфейса." : "Interface settings could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -73307,7 +73307,7 @@ index 00000000..3d4d5447
 +        ])
 +        var ayu: [(String, String, Bool)] = []
 +        if interface.showMessageShot {
-+            ayu.append(("photo.on.rectangle", "AyuGram · MessageShot", false))
++            ayu.append(("photo.on.rectangle", "Umogram · MessageShot", false))
 +        }
 +        ayu.append(("character.bubble", AyuStrings.ayugramTranslate.text(ru), false))
 +        if interface.showCopyMessageIds {
@@ -73911,9 +73911,9 @@ index 00000000..a077f6c9
 +        case .archiveEmptyEntriesAppearAfterNew: return "Архив пока пуст. Записи появятся после новых правок или удалений."
 +        case .archivedChats: return "АРХИВ"
 +        case .authorNames: return "Имена авторов"
-+        case .ayugramCopyMessageIds: return "AyuGram · Копировать ID"
-+        case .ayugramHeader: return "Заголовок AyuGram"
-+        case .ayugramTranslate: return "AyuGram · Перевести"
++        case .ayugramCopyMessageIds: return "Umogram · Копировать ID"
++        case .ayugramHeader: return "Заголовок Umogram"
++        case .ayugramTranslate: return "Umogram · Перевести"
 +        case .backgroundNotifications: return "Уведомления в фоне"
 +        case .badgeEmojiStatusesPremiumEmojiStickers: return "Значок, эмодзи-статусы, Premium-эмодзи и стикеры — только в этом приложении, подписки это не даёт. Другие видят Premium-эмодзи ссылками.\n\nСтатус выбирается в профиле: нажми на значок рядом с именем."
 +        case .cancel: return "Отмена"
@@ -74053,15 +74053,15 @@ index 00000000..a077f6c9
 +        case .notSet: return "Не задан"
 +        case .notValidRegularExpressionCheckBrackets: return "Это не регулярное выражение: проверь скобки и спецсимволы."
 +        case .nearbyContact: return "Контакт рядом"
-+        case .nearbyContactFooter: return "Отправляется твоё имя и временная ссылка на профиль, как в QR-коде контакта. Номер телефона не передаётся. Работает между iPhone с AyuGram, на которых открыт этот экран."
++        case .nearbyContactFooter: return "Отправляется твоё имя и временная ссылка на профиль, как в QR-коде контакта. Номер телефона не передаётся. Работает между iPhone с Umogram, на которых открыт этот экран."
 +        case .nearbyContactNearby: return "Рядом"
 +        case .nearbyContactOpenProfile: return "Открыть профиль"
-+        case .nearbyContactSearching: return "Ищем iPhone рядом… Попроси друга открыть этот же экран в AyuGram. Bluetooth и Wi-Fi должны быть включены."
++        case .nearbyContactSearching: return "Ищем iPhone рядом… Попроси друга открыть этот же экран в Umogram. Bluetooth и Wi-Fi должны быть включены."
 +        case .nearbyContactSend: return "Отправить"
 +        case .nearbyContactSendMine: return "Отправить свой"
 +        case .nearbyContactSent: return "Отправлено"
 +        case .nearbyContactTokenFailed: return "Не удалось получить ссылку на профиль. Проверь подключение к интернету."
-+        case .nearbyContactUnavailable: return "Не удалось начать поиск. Разреши AyuGram доступ к локальной сети: Настройки → Конфиденциальность → Локальная сеть."
++        case .nearbyContactUnavailable: return "Не удалось начать поиск. Разреши Umogram доступ к локальной сети: Настройки → Конфиденциальность → Локальная сеть."
 +        case .nothingHereYetTurnCopyCached: return "Здесь пока пусто.\nВключи «Копировать загруженные медиа» в «Истории сообщений», и сюда будут попадать фото, видео и файлы из удалённых и изменённых сообщений."
 +        case .numberFormattingAppliesNextTimeCounters: return "Числа применяются при следующем показе счётчиков (надёжнее всего — после перезапуска)."
 +        case .numberHiddenSettingsHeaderPhoneNumber: return "Номер скрывается в шапке настроек, в строке «Номер телефона» и в вашем профиле. ID показывается в профилях, нажатие копирует его."
@@ -74150,7 +74150,7 @@ index 00000000..a077f6c9
 +        case .stop: return "Остановить"
 +        case .stoppedAlreadyForwardedMessagesStaySaved: return "Остановлено. Уже пересланное остаётся в Избранном."
 +        case .streamerMode: return "Режим стримера"
-+        case .streamerModeKeepsAyugramOutScreenshots: return "Режим стримера прячет AyuGram со скриншотов, записи экрана и трансляций, как секретный чат."
++        case .streamerModeKeepsAyugramOutScreenshots: return "Режим стримера прячет Umogram со скриншотов, записи экрана и трансляций, как секретный чат."
 +        case .suspiciousLinksStillAskUp200: return "Подозрительные ссылки всё равно спросят. Недавних стикеров будет до 200 вместо 20."
 +        case .tapIdProfileCopy: return "Нажми на ID в профиле, чтобы скопировать его."
 +        case .tapThemeSwitchFollowAppLight: return "Нажми на тему, чтобы переключить: как в приложении, светлая, тёмная."
@@ -74161,7 +74161,7 @@ index 00000000..a077f6c9
 +        case .total: return "Всего"
 +        case .translate: return "Переводить на"
 +        case .translate2: return "Язык перевода"
-+        case .translateFromMessageMenuAyugramTranslate: return "Перевод — в меню сообщения: «AyuGram · Перевести». Текст уходит переводчику только после нажатия."
++        case .translateFromMessageMenuAyugramTranslate: return "Перевод — в меню сообщения: «Umogram · Перевести». Текст уходит переводчику только после нажатия."
 +        case .translating: return "Перевожу…"
 +        case .translation: return "ПЕРЕВОД · "
 +        case .translation2: return "Перевод"
@@ -74197,9 +74197,9 @@ index 00000000..a077f6c9
 +        case .archiveEmptyEntriesAppearAfterNew: return "The archive is empty. Entries appear after new edits or deletions."
 +        case .archivedChats: return "ARCHIVED CHATS"
 +        case .authorNames: return "Author names"
-+        case .ayugramCopyMessageIds: return "AyuGram · Copy Message IDs"
-+        case .ayugramHeader: return "AyuGram header"
-+        case .ayugramTranslate: return "AyuGram · Translate"
++        case .ayugramCopyMessageIds: return "Umogram · Copy Message IDs"
++        case .ayugramHeader: return "Umogram header"
++        case .ayugramTranslate: return "Umogram · Translate"
 +        case .backgroundNotifications: return "Background notifications"
 +        case .badgeEmojiStatusesPremiumEmojiStickers: return "The badge, emoji statuses, Premium emoji and stickers — in this app only, it is not a subscription. Others see Premium emoji as links.\n\nPick a status in your profile: tap the icon beside your name."
 +        case .cancel: return "Cancel"
@@ -74339,15 +74339,15 @@ index 00000000..a077f6c9
 +        case .notSet: return "Not set"
 +        case .notValidRegularExpressionCheckBrackets: return "This is not a valid regular expression: check brackets and special characters."
 +        case .nearbyContact: return "Nearby Contact"
-+        case .nearbyContactFooter: return "Your name and a temporary profile link are sent, as in the contact QR code. Your phone number is not shared. Works between iPhones with AyuGram that have this screen open."
++        case .nearbyContactFooter: return "Your name and a temporary profile link are sent, as in the contact QR code. Your phone number is not shared. Works between iPhones with Umogram that have this screen open."
 +        case .nearbyContactNearby: return "Nearby"
 +        case .nearbyContactOpenProfile: return "Open Profile"
-+        case .nearbyContactSearching: return "Looking for iPhones nearby… Ask your friend to open this screen in AyuGram. Bluetooth and Wi-Fi must be on."
++        case .nearbyContactSearching: return "Looking for iPhones nearby… Ask your friend to open this screen in Umogram. Bluetooth and Wi-Fi must be on."
 +        case .nearbyContactSend: return "Send"
 +        case .nearbyContactSendMine: return "Send Mine"
 +        case .nearbyContactSent: return "Sent"
 +        case .nearbyContactTokenFailed: return "Could not get a profile link. Check your internet connection."
-+        case .nearbyContactUnavailable: return "Could not start looking. Allow AyuGram to use the local network: Settings → Privacy → Local Network."
++        case .nearbyContactUnavailable: return "Could not start looking. Allow Umogram to use the local network: Settings → Privacy → Local Network."
 +        case .nothingHereYetTurnCopyCached: return "Nothing here yet.\nTurn on \"Copy cached media\" in Message History to keep photos, videos and files from deleted and edited messages."
 +        case .numberFormattingAppliesNextTimeCounters: return "Number formatting applies the next time counters are drawn (most reliably after a restart)."
 +        case .numberHiddenSettingsHeaderPhoneNumber: return "The number is hidden in the Settings header, the Phone Number row and your own profile. IDs appear in profiles; tap one to copy it."
@@ -74436,7 +74436,7 @@ index 00000000..a077f6c9
 +        case .stop: return "Stop"
 +        case .stoppedAlreadyForwardedMessagesStaySaved: return "Stopped. Already forwarded messages stay in Saved Messages."
 +        case .streamerMode: return "Streamer mode"
-+        case .streamerModeKeepsAyugramOutScreenshots: return "Streamer mode keeps AyuGram out of screenshots, recordings and streams, like a secret chat."
++        case .streamerModeKeepsAyugramOutScreenshots: return "Streamer mode keeps Umogram out of screenshots, recordings and streams, like a secret chat."
 +        case .suspiciousLinksStillAskUp200: return "Suspicious links still ask. Up to 200 recent stickers instead of 20."
 +        case .tapIdProfileCopy: return "Tap an ID in a profile to copy it."
 +        case .tapThemeSwitchFollowAppLight: return "Tap the theme to switch: follow app, light, dark."
@@ -74447,7 +74447,7 @@ index 00000000..a077f6c9
 +        case .total: return "Total"
 +        case .translate: return "Translate to"
 +        case .translate2: return "Translate to"
-+        case .translateFromMessageMenuAyugramTranslate: return "Translate from the message menu: \"AyuGram · Translate\". Text is sent to the translator only when you tap it."
++        case .translateFromMessageMenuAyugramTranslate: return "Translate from the message menu: \"Umogram · Translate\". Text is sent to the translator only when you tap it."
 +        case .translating: return "Translating…"
 +        case .translation: return "TRANSLATION · "
 +        case .translation2: return "Translation"
@@ -74549,7 +74549,7 @@ index 00000000..98d15bed
 +    case failed(String)
 +}
 +
-+/// "AyuGram · Translate": the original and its translation by the chosen provider, as a sheet.
++/// "Umogram · Translate": the original and its translation by the chosen provider, as a sheet.
 +private func ayuTranslationResultController(context: AccountContext, text: String) -> ViewController {
 +    let status = ValuePromise<AyuTranslationStatus>(.running, ignoreRepeated: true)
 +    let request = MetaDisposable()
@@ -75000,7 +75000,7 @@ index 00000000..efc10b4d
 +    presentError = { [weak controller] in
 +        let data = context.sharedContext.currentPresentationData.with { $0 }
 +        let ru = data.strings.baseLanguageCode.hasPrefix("ru")
-+        controller?.present(textAlertController(context: context, title: "AyuGram", text: AyuStrings.notSavedCheckAddressStartsHttps.text(ru), actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++        controller?.present(textAlertController(context: context, title: "Umogram", text: AyuStrings.notSavedCheckAddressStartsHttps.text(ru), actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +    return controller
 +}
@@ -75098,7 +75098,7 @@ index 8c474034..2212f0ad 100644
          let arguments = arguments as! PrivacyAndSecurityControllerArguments
          switch self {
 +            case .ayuGhost:
-+                return ItemListDisclosureItem(presentationData: presentationData, systemStyle: .glass, title: "AyuGram · Ghost Mode", label: "", sectionId: self.section, style: .blocks, action: {
++                return ItemListDisclosureItem(presentationData: presentationData, systemStyle: .glass, title: "Umogram · Ghost Mode", label: "", sectionId: self.section, style: .blocks, action: {
 +                    arguments.openAyuGhost()
 +                })
              case let .privacyHeader(_, text):
@@ -76935,7 +76935,7 @@ index 00000000..77ee47b2
 +    public var errorDescription: String? {
 +        switch self {
 +        case .invalidFile: return "Invalid .iosplug adapter package."
-+        case .newerEngine: return "This .iosplug requires a newer AyuGram plugin engine. Update the app."
++        case .newerEngine: return "This .iosplug requires a newer Umogram plugin engine. Update the app."
 +        }
 +    }
 +}
@@ -77369,7 +77369,7 @@ index 00000000..b31c4441
 +    for (resource, name) in resources.prefix(4) {
 +        guard let path = mediaBox.completedResourcePath(resource) else { continue }
 +        do { attachments.append(try store.copy(source: URL(fileURLWithPath: path), displayName: name)) }
-+        catch { Logger.shared.log("AyuGram", "Cached media copy skipped (file unavailable, archive quota or I/O error)") }
++        catch { Logger.shared.log("Umogram", "Cached media copy skipped (file unavailable, archive quota or I/O error)") }
 +    }
 +    return attachments
 +}
@@ -77383,7 +77383,7 @@ index 00000000..b31c4441
 +        return Set(state.records.flatMap { $0.attachments ?? [] }.map { $0.storedName })
 +    }
 +    |> distinctUntilChanged
-+    |> deliverOn(Queue(name: "AyuGram-ArchiveFiles"))
++    |> deliverOn(Queue(name: "Umogram-ArchiveFiles"))
 +    |> map { names -> Void in store.prune(validNames: names) }
 +}
 +
@@ -77625,7 +77625,7 @@ index 00000000..5a5a6b96
 +        self.capturedAt = try values.decode(Int64.self, forKey: .capturedAt)
 +        let rawKind = try values.decode(String.self, forKey: .kind)
 +        guard let kind = Kind(rawValue: rawKind) else {
-+            throw DecodingError.dataCorruptedError(forKey: .kind, in: values, debugDescription: "Unknown AyuGram history event")
++            throw DecodingError.dataCorruptedError(forKey: .kind, in: values, debugDescription: "Unknown Umogram history event")
 +        }
 +        self.kind = kind
 +        self.text = try values.decode(String.self, forKey: .text)
@@ -78649,9 +78649,9 @@ index 00000000..cdb949f1
 +            switch action.kind {
 +            case .cameraFlip, .chatColors, .arcadeGame, .unlimitedAccounts, .groupMentions, .petpet, .reactionsTotal, .formattedCopy: break
 +            case .search:
-+                guard try action.queries("AyuGram") == ["AyuGram"] else { throw AyuPluginError.invalidInput }
++                guard try action.queries("Umogram") == ["Umogram"] else { throw AyuPluginError.invalidInput }
 +            case .searchTerms:
-+                guard try action.queries("AyuGram|Telegram|AyuGram") == ["AyuGram", "Telegram"] else { throw AyuPluginError.invalidInput }
++                guard try action.queries("Umogram|Telegram|Umogram") == ["Umogram", "Telegram"] else { throw AyuPluginError.invalidInput }
 +            case .replaceText:
 +                let find = action.find ?? ""
 +                let marker = find.contains("A") ? "B" : "A"
@@ -79319,7 +79319,7 @@ index 00000000..ba238819
 +    private static func query(accountId: Int64, settings: AyuAdvancedSettings) throws -> [String: Any] {
 +        let endpoint = try AyuTranslationRequest.endpoint(settings).absoluteString
 +        let hash = SHA256.hash(data: Data(endpoint.utf8)).map { String(format: "%02x", $0) }.joined()
-+        return [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: (Bundle.main.bundleIdentifier ?? "AyuGram") + ".translation", kSecAttrAccount as String: "\(accountId)." + settings.translationProvider.rawValue + "." + hash]
++        return [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: (Bundle.main.bundleIdentifier ?? "Umogram") + ".translation", kSecAttrAccount as String: "\(accountId)." + settings.translationProvider.rawValue + "." + hash]
 +    }
 +    public static func read(accountId: Int64, settings: AyuAdvancedSettings) throws -> String? {
 +        var query = try self.query(accountId: accountId, settings: settings)
@@ -80153,18 +80153,18 @@ index 00000000..73b546fa
 +        AyuAppIconPreset(name: nil, assetName: "AyuGram/Brand", title: "My logo", russianTitle: "Мой логотип"),
 +        AyuAppIconPreset(name: "AyuBlue", assetName: "AyuGram/Blue", title: "My blue", russianTitle: "Мой синий"),
 +        AyuAppIconPreset(name: "AyuGraphite", assetName: "AyuGram/Graphite", title: "My graphite", russianTitle: "Мой графит"),
-+        AyuAppIconPreset(name: "AyuOriginalDefault", assetName: "AyuGram/OriginalDefault", title: "AyuGram Default", russianTitle: "AyuGram Default"),
-+        AyuAppIconPreset(name: "AyuOriginalAlt", assetName: "AyuGram/OriginalAlt", title: "AyuGram Alt", russianTitle: "AyuGram Alt"),
-+        AyuAppIconPreset(name: "AyuOriginalDiscord", assetName: "AyuGram/OriginalDiscord", title: "AyuGram Discord", russianTitle: "AyuGram Discord"),
-+        AyuAppIconPreset(name: "AyuOriginalSpotify", assetName: "AyuGram/OriginalSpotify", title: "AyuGram Spotify", russianTitle: "AyuGram Spotify"),
-+        AyuAppIconPreset(name: "AyuOriginalExtera", assetName: "AyuGram/OriginalExtera", title: "AyuGram Extera", russianTitle: "AyuGram Extera"),
-+        AyuAppIconPreset(name: "AyuOriginalNothing", assetName: "AyuGram/OriginalNothing", title: "AyuGram Nothing", russianTitle: "AyuGram Nothing"),
-+        AyuAppIconPreset(name: "AyuOriginalBard", assetName: "AyuGram/OriginalBard", title: "AyuGram Bard", russianTitle: "AyuGram Bard"),
-+        AyuAppIconPreset(name: "AyuOriginalYaplus", assetName: "AyuGram/OriginalYaplus", title: "AyuGram Yaplus", russianTitle: "AyuGram Yaplus"),
-+        AyuAppIconPreset(name: "AyuOriginalWin95", assetName: "AyuGram/OriginalWin95", title: "AyuGram Win95", russianTitle: "AyuGram Win95"),
-+        AyuAppIconPreset(name: "AyuOriginalChibi", assetName: "AyuGram/OriginalChibi", title: "AyuGram Chibi", russianTitle: "AyuGram Chibi"),
-+        AyuAppIconPreset(name: "AyuOriginalChibi2", assetName: "AyuGram/OriginalChibi2", title: "AyuGram Chibi2", russianTitle: "AyuGram Chibi2"),
-+        AyuAppIconPreset(name: "AyuOriginalExtera2", assetName: "AyuGram/OriginalExtera2", title: "AyuGram Extera2", russianTitle: "AyuGram Extera2"),
++        AyuAppIconPreset(name: "AyuOriginalDefault", assetName: "Umogram/OriginalDefault", title: "Umogram Default", russianTitle: "Umogram Default"),
++        AyuAppIconPreset(name: "AyuOriginalAlt", assetName: "Umogram/OriginalAlt", title: "Umogram Alt", russianTitle: "Umogram Alt"),
++        AyuAppIconPreset(name: "AyuOriginalDiscord", assetName: "Umogram/OriginalDiscord", title: "Umogram Discord", russianTitle: "Umogram Discord"),
++        AyuAppIconPreset(name: "AyuOriginalSpotify", assetName: "Umogram/OriginalSpotify", title: "Umogram Spotify", russianTitle: "Umogram Spotify"),
++        AyuAppIconPreset(name: "AyuOriginalExtera", assetName: "Umogram/OriginalExtera", title: "Umogram Extera", russianTitle: "Umogram Extera"),
++        AyuAppIconPreset(name: "AyuOriginalNothing", assetName: "Umogram/OriginalNothing", title: "Umogram Nothing", russianTitle: "Umogram Nothing"),
++        AyuAppIconPreset(name: "AyuOriginalBard", assetName: "Umogram/OriginalBard", title: "Umogram Bard", russianTitle: "Umogram Bard"),
++        AyuAppIconPreset(name: "AyuOriginalYaplus", assetName: "Umogram/OriginalYaplus", title: "Umogram Yaplus", russianTitle: "Umogram Yaplus"),
++        AyuAppIconPreset(name: "AyuOriginalWin95", assetName: "Umogram/OriginalWin95", title: "Umogram Win95", russianTitle: "Umogram Win95"),
++        AyuAppIconPreset(name: "AyuOriginalChibi", assetName: "Umogram/OriginalChibi", title: "Umogram Chibi", russianTitle: "Umogram Chibi"),
++        AyuAppIconPreset(name: "AyuOriginalChibi2", assetName: "Umogram/OriginalChibi2", title: "Umogram Chibi2", russianTitle: "Umogram Chibi2"),
++        AyuAppIconPreset(name: "AyuOriginalExtera2", assetName: "Umogram/OriginalExtera2", title: "Umogram Extera2", russianTitle: "Umogram Extera2"),
 +    ]
 +}
 diff --git a/submodules/TelegramPresentationData/Sources/AyuSettingsIcons.swift b/submodules/TelegramPresentationData/Sources/AyuSettingsIcons.swift
@@ -81231,9 +81231,9 @@ index 8c4a24b7..84b887af 100644
 +                }
 +            } catch {
 +                let data = context.sharedContext.currentPresentationData.with { $0 }
-+                self?.controller?.present(textAlertController(context: context, title: "AyuGram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Локальный статус не сохранён." : "Local status was not saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
++                self?.controller?.present(textAlertController(context: context, title: "Umogram", text: data.strings.baseLanguageCode.hasPrefix("ru") ? "Локальный статус не сохранён." : "Local status was not saved.", actions: [TextAlertAction(type: .defaultAction, title: data.strings.Common_OK, action: {})]), in: .window(.root))
 +            }
-+        }), localStatusOnly: true, sourceView: sourceView, emojiContent: EmojiPagerContentComponent.emojiInputData(context: context, animationCache: context.animationCache, animationRenderer: context.animationRenderer, isStandalone: false, subject: .status, hasTrending: false, topReactionItems: [], areUnicodeEmojiEnabled: false, areCustomEmojiEnabled: true, chatPeerId: context.account.peerId, selectedItems: current.map { Set([EngineMedia.Id(namespace: Namespaces.Media.CloudFile, id: $0)]) } ?? Set(), topStatusTitle: "AyuGram · Local"), currentSelection: current, destinationItemView: { [weak sourceView] in sourceView })
++        }), localStatusOnly: true, sourceView: sourceView, emojiContent: EmojiPagerContentComponent.emojiInputData(context: context, animationCache: context.animationCache, animationRenderer: context.animationRenderer, isStandalone: false, subject: .status, hasTrending: false, topReactionItems: [], areUnicodeEmojiEnabled: false, areCustomEmojiEnabled: true, chatPeerId: context.account.peerId, selectedItems: current.map { Set([EngineMedia.Id(namespace: Namespaces.Media.CloudFile, id: $0)]) } ?? Set(), topStatusTitle: "Umogram · Local"), currentSelection: current, destinationItemView: { [weak sourceView] in sourceView })
 +        picker.pushController = { [weak self] controller in self?.controller?.push(controller) }
 +        self.emojiStatusSelectionController = picker
 +        self.controller?.present(picker, in: .window(.root))
@@ -81303,7 +81303,7 @@ index a4873696..80a7b214 100644
 +    items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 100, label: .titleBadge("BETA", UIColor(rgb: 0xFFD60A)), text: "exteraGram", icon: AyuSettingsIcons.exteraLogo, action: {
 +        interaction.openSettings(.ayuGram)
 +    }))
-+    items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 101, text: "AyuGram", icon: AyuSettingsIcons.logo, action: {
++    items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 101, text: "Umogram", icon: AyuSettingsIcons.logo, action: {
 +        interaction.openSettings(.ayuGramPreferences)
 +    }))
      items[.shortcuts]!.append(PeerInfoScreenDisclosureItem(id: 1, text: presentationData.strings.Settings_SavedMessages, icon: PresentationResourcesSettings.savedMessages, action: {
@@ -147306,7 +147306,7 @@ index 1ceb46bc..ed6a26a2 100644
 +        guard let message = self.ayuStartupNotice else { return }
 +        self.ayuStartupNotice = nil
 +        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-+            let alert = UIAlertController(title: "AyuGram", message: message, preferredStyle: .alert)
++            let alert = UIAlertController(title: "Umogram", message: message, preferredStyle: .alert)
 +            alert.addAction(UIAlertAction(title: "OK", style: .default))
 +            self?.mainWindow?.presentNative(alert)
 +        }
@@ -147426,7 +147426,7 @@ index 1ceb46bc..ed6a26a2 100644
 -                if buildConfig.isInternalBuild {
 -                    icons.append(PresentationAppIcon(name: "WhiteFilledIcon", imageName: "WhiteFilledIcon"))
 +                return AyuAppIconCatalog.presets.map { preset in
-+                    PresentationAppIcon(name: preset.name ?? "AyuGram", imageName: preset.assetName, isDefault: preset.name == nil)
++                    PresentationAppIcon(name: preset.name ?? "Umogram", imageName: preset.assetName, isDefault: preset.name == nil)
                  }
 -                
 -                icons.append(PresentationAppIcon(name: "Premium", imageName: "Premium", isPremium: true))
@@ -147476,7 +147476,7 @@ index 1ceb46bc..ed6a26a2 100644
 +            // shows new messages as local notifications. iOS decides when (and whether) it runs.
 +            let ayuRefreshTaskId = "\(baseAppBundleId).refresh"
 +            BGTaskScheduler.shared.register(forTaskWithIdentifier: ayuRefreshTaskId, using: DispatchQueue.main) { task in
-+                Logger.shared.log("App \(self.episodeId)", "Executing AyuGram refresh task")
++                Logger.shared.log("App \(self.episodeId)", "Executing Umogram refresh task")
 +                ayuScheduleRefreshTask(identifier: ayuRefreshTaskId)
 +                var completed = false
 +                let complete: (Bool) -> Void = { success in
@@ -147623,7 +147623,7 @@ index 00000000..c1af8a74
 +                    if let peer = message.peers[peerId] {
 +                        content.title = EnginePeer(peer).displayTitle(strings: presentationData.strings, displayOrder: presentationData.nameDisplayOrder)
 +                    } else {
-+                        content.title = "AyuGram"
++                        content.title = "Umogram"
 +                    }
 +                    // Secret chats, a locked app or disabled previews never put message text on the lock screen.
 +                    let showsText = category.displayPreviews && !isLocked && peerId.namespace != Namespaces.Peer.SecretChat
@@ -147666,7 +147666,7 @@ index 00000000..c1af8a74
 +    do {
 +        try BGTaskScheduler.shared.submit(request)
 +    } catch let error {
-+        Logger.shared.log("AyuGram", "Refresh task not scheduled: \(error)")
++        Logger.shared.log("Umogram", "Refresh task not scheduled: \(error)")
 +    }
 +}
 diff --git a/submodules/TelegramUI/Sources/AyuPython/AyuPythonBootstrap.swift b/submodules/TelegramUI/Sources/AyuPython/AyuPythonBootstrap.swift
@@ -147836,7 +147836,7 @@ index 00000000..e726360c
 +        super.viewDidLoad()
 +        self.view.backgroundColor = .systemBackground
 +        let title = UILabel()
-+        title.text = "AyuGram"
++        title.text = "Umogram"
 +        title.font = .preferredFont(forTextStyle: .largeTitle)
 +        title.adjustsFontForContentSizeCategory = true
 +        let message = UILabel()
@@ -148105,7 +148105,7 @@ index 00000000..e912d793
 +            rendererContext.cgContext.clear(CGRect(x: 0.0, y: 0.0, width: width, height: ceil(y + 44.0)))
 +        }
 +        if showHeader {
-+            ("AyuGram · MessageShot" as NSString).draw(at: CGPoint(x: 28.0, y: 28.0), withAttributes: [.font: UIFont.systemFont(ofSize: 30.0, weight: .semibold), .foregroundColor: secondary])
++            ("Umogram · MessageShot" as NSString).draw(at: CGPoint(x: 28.0, y: 28.0), withAttributes: [.font: UIFont.systemFont(ofSize: 30.0, weight: .semibold), .foregroundColor: secondary])
 +        }
 +        for (index, card) in cards.enumerated() {
 +            let (frame, textFrame, photoFrame) = layouts[index]
@@ -148161,14 +148161,14 @@ index 00000000..24b5f454
 +            self.ayuFilterDraftInProgress = false
 +            let ru = self.presentationData.strings.baseLanguageCode.hasPrefix("ru")
 +            guard !self.presentationInterfaceState.copyProtectionEnabled, let message = messages?.first else {
-+                self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Сообщение больше недоступно для создания фильтра." : "This message is no longer available for creating a filter.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++                self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Сообщение больше недоступно для создания фильтра." : "This message is no longer available for creating a filter.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +                return
 +            }
 +            do {
 +                let patterns = try self.context.account.network.ayuGhostMode.current.regexFilters.draftAddingLiteral(message.text)
 +                self.push(ayuChatOptionsController(context: self.context, regex: true, initialPatterns: patterns))
 +            } catch {
-+                self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Правило не добавлено: максимум 32 правила по 512 байт после экранирования. Для длинного сообщения задай короткую фразу вручную в Regex-фильтрах." : "Rule not added: up to 32 rules of 512 bytes after escaping. For a long message, enter a shorter phrase manually in Regex Filters.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++                self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Правило не добавлено: максимум 32 правила по 512 байт после экранирования. Для длинного сообщения задай короткую фразу вручную в Regex-фильтрах." : "Rule not added: up to 32 rules of 512 bytes after escaping. For a long message, enter a shorter phrase manually in Regex Filters.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +            }
 +        })
 +    }
@@ -148313,10 +148313,10 @@ index 00000000..b03bede5
 +            self.ayuHideMessageInProgress = false
 +            let ru = self.presentationData.strings.baseLanguageCode.hasPrefix("ru")
 +            guard let references else {
-+                self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Сообщение больше недоступно для локального скрытия." : "This message is no longer available for local hiding.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++                self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Сообщение больше недоступно для локального скрытия." : "This message is no longer available for local hiding.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +                return
 +            }
-+            self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Скрыть сообщение или альбом только в ленте этого аккаунта? Локальное скрытие будет включено. Вернуть можно в «Настройки → AyuGram → Скрытые сообщения»." : "Hide this message or album from this account's chat history? Local hiding will be enabled. Restore it under Settings → AyuGram → Hidden Messages.", actions: [
++            self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Скрыть сообщение или альбом только в ленте этого аккаунта? Локальное скрытие будет включено. Вернуть можно в «Настройки → Umogram → Скрытые сообщения»." : "Hide this message or album from this account's chat history? Local hiding will be enabled. Restore it under Settings → Umogram → Hidden Messages.", actions: [
 +                TextAlertAction(type: .genericAction, title: self.presentationData.strings.Common_Cancel, action: {}),
 +                TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: { [weak self] in
 +                    guard let self else { return }
@@ -148327,10 +148327,10 @@ index 00000000..b03bede5
 +                            if accepted { $0.hiddenMessages.enabled = true }
 +                        }
 +                        if !accepted {
-+                            self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Лимит — 200 сообщений или альбомов. Верни часть скрытых записей и повтори." : "The limit is 200 messages or albums. Restore some entries and try again.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++                            self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Лимит — 200 сообщений или альбомов. Верни часть скрытых записей и повтори." : "The limit is 200 messages or albums. Restore some entries and try again.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +                        }
 +                    } catch {
-+                        self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Не удалось сохранить скрытие. Изменение не применено." : "Hiding could not be saved. The change was not applied.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++                        self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Не удалось сохранить скрытие. Изменение не применено." : "Hiding could not be saved. The change was not applied.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +                    }
 +                })
 +            ]), in: .window(.root))
@@ -148366,7 +148366,7 @@ index 00000000..2c07baa7
 +        case .gif: text = ru ? "Отправить эту GIF-анимацию?" : "Send this GIF?"
 +        }
 +        let decision = AyuMediaSendDecision()
-+        let controller = textAlertController(context: self.context, title: "AyuGram", text: text, actions: [
++        let controller = textAlertController(context: self.context, title: "Umogram", text: text, actions: [
 +            TextAlertAction(type: .genericAction, title: self.presentationData.strings.Common_Cancel, action: {
 +                let _ = decision.resolve(approved: false)
 +            }),
@@ -148893,7 +148893,7 @@ index 00000000..65d2f500
 +extension ChatControllerImpl {
 +    private func ayuTextToolError() {
 +        let ru = self.presentationData.strings.baseLanguageCode.hasPrefix("ru")
-+        self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Текст больше недоступен для этого действия или превышает лимит. Для повтора заверши редактирование текущего сообщения." : "The text is no longer available for this action or exceeds its limit. Finish editing the current message before repeating text.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++        self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Текст больше недоступен для этого действия или превышает лимит. Для повтора заверши редактирование текущего сообщения." : "The text is no longer available for this action or exceeds its limit. Finish editing the current message before repeating text.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +    }
 +
 +    func ayuUseMessageText(id: EngineMessage.Id, repeatText: Bool) {
@@ -149096,7 +149096,7 @@ index 00000000..131ef78e
 +    func ayuPresentMessageShotChoice(ids: [EngineMessage.Id], shareNormally: @escaping () -> Void) {
 +        guard self.context.account.network.ayuGhostMode.current.interface.showMessageShot else { shareNormally(); return }
 +        let ru = self.presentationData.strings.baseLanguageCode.hasPrefix("ru")
-+        self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Как поделиться выбранными сообщениями?" : "How would you like to share the selected messages?", actions: [
++        self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Как поделиться выбранными сообщениями?" : "How would you like to share the selected messages?", actions: [
 +            TextAlertAction(type: .genericAction, title: self.presentationData.strings.Common_Cancel, action: {}),
 +            TextAlertAction(type: .defaultAction, title: ru ? "Сообщения" : "Messages", action: shareNormally),
 +            TextAlertAction(type: .defaultAction, title: "MessageShot", action: { [weak self] in self?.ayuShowMessageShot(ids: ids) })
@@ -149239,7 +149239,7 @@ index face5ae7..34bbb294 100644
 +            self.ayuGhostBarButton.image = enabled ? ayuGhostNavigationImage : ayuGhostNavigationOffImage
 +            self.ayuGhostBarButton.target = self
 +            self.ayuGhostBarButton.action = #selector(self.ayuGhostButtonPressed)
-+            self.ayuGhostBarButton.accessibilityLabel = enabled ? "Disable AyuGram Ghost Mode" : "Enable AyuGram Ghost Mode"
++            self.ayuGhostBarButton.accessibilityLabel = enabled ? "Disable Umogram Ghost Mode" : "Enable Umogram Ghost Mode"
 +            self.ayuGhostBarButton.accessibilityValue = enabled ? "On" : "Off"
 +            self.ayuGhostBarButton.tintColor = enabled ? presentationInterfaceState.theme.rootController.navigationBar.primaryTextColor : presentationInterfaceState.theme.rootController.navigationBar.secondaryTextColor
 +            rightBarButtons.insert(self.ayuGhostBarButton, at: 0)
@@ -149401,7 +149401,7 @@ index 5fe58bbf..8c2f255a 100644
 +            self.updateRightNavigationButtons(presentationInterfaceState: self.presentationInterfaceState, transition: .immediate)
 +        } catch {
 +            let ru = self.presentationData.strings.baseLanguageCode.hasPrefix("ru")
-+            self.present(textAlertController(context: self.context, title: "AyuGram", text: ru ? "Не удалось сохранить Ghost Mode." : "Ghost Mode could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
++            self.present(textAlertController(context: self.context, title: "Umogram", text: ru ? "Не удалось сохранить Ghost Mode." : "Ghost Mode could not be saved.", actions: [TextAlertAction(type: .defaultAction, title: self.presentationData.strings.Common_OK, action: {})]), in: .window(.root))
 +        }
 +    }
      
@@ -149681,7 +149681,7 @@ index 1ade8c01..ef42aa26 100644
 +            let ayuInterface = context.account.network.ayuGhostMode.current.interface
 +            var ayuActions: [ContextMenuItem] = []
 +            if ayuInterface.showMessageShot, !chatPresentationInterfaceState.copyProtectionEnabled, messages.allSatisfy({ EngineMessage($0).ayuCanMessageShot }) {
-+                ayuActions.append(.action(ContextMenuActionItem(text: "AyuGram · MessageShot", icon: { theme in
++                ayuActions.append(.action(ContextMenuActionItem(text: "Umogram · MessageShot", icon: { theme in
 +                    return UIImage(systemName: "photo.on.rectangle")?.withTintColor(theme.contextMenu.primaryColor, renderingMode: .alwaysOriginal)
 +                }, action: { controller, _ in
 +                    controller?.dismiss(completion: {
@@ -149690,7 +149690,7 @@ index 1ade8c01..ef42aa26 100644
 +                })))
 +            }
 +            if !message.text.isEmpty, !chatPresentationInterfaceState.copyProtectionEnabled, EngineMessage(message).ayuCanMessageShot {
-+                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "AyuGram · Перевести" : "AyuGram · Translate", icon: { theme in UIImage(systemName: "character.bubble")?.withTintColor(theme.contextMenu.primaryColor, renderingMode: .alwaysOriginal) }, action: { controller, _ in
++                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "Umogram · Перевести" : "Umogram · Translate", icon: { theme in UIImage(systemName: "character.bubble")?.withTintColor(theme.contextMenu.primaryColor, renderingMode: .alwaysOriginal) }, action: { controller, _ in
 +                    controller?.dismiss(completion: { ayuPresentTranslation(context: context, text: message.text) })
 +                })))
 +            }
@@ -149739,7 +149739,7 @@ index 1ade8c01..ef42aa26 100644
 +                let kind: AyuPeerIdFormat.Kind = message.id.peerId.namespace == Namespaces.Peer.CloudChannel ? .channel : (message.id.peerId.namespace == Namespaces.Peer.CloudGroup ? .group : .user)
 +                let chatId = AyuPeerIdFormat.text(id: message.id.peerId.id._internalGetInt64Value(), kind: kind)
 +                let identifiers = "Chat ID: \(chatId)\nMessage ID: \(message.id.id)"
-+                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "AyuGram · Копировать ID" : "AyuGram · Copy Message IDs", icon: { theme in
++                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "Umogram · Копировать ID" : "Umogram · Copy Message IDs", icon: { theme in
 +                    return UIImage(systemName: "number")?.withTintColor(theme.contextMenu.primaryColor, renderingMode: .alwaysOriginal)
 +                }, action: { controller, _ in
 +                    controller?.dismiss(completion: {
@@ -149752,7 +149752,7 @@ index 1ade8c01..ef42aa26 100644
 +            var isGroup = message.peers[message.id.peerId] is TelegramGroup
 +            if let channel = message.peers[message.id.peerId] as? TelegramChannel, case .group = channel.info { isGroup = true }
 +            if ayuInterface.showAuthorSearch, isGroup, let author = message.author, author.id.namespace == Namespaces.Peer.CloudUser, EngineMessage(message).adAttribute == nil {
-+                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "AyuGram · Сообщения автора" : "AyuGram · Messages from Author", icon: { theme in
++                ayuActions.append(.action(ContextMenuActionItem(text: ru ? "Umogram · Сообщения автора" : "Umogram · Messages from Author", icon: { theme in
 +                    return UIImage(systemName: "person.crop.circle.badge.magnifyingglass")?.withTintColor(theme.contextMenu.primaryColor, renderingMode: .alwaysOriginal)
 +                }, action: { controller, _ in
 +                    controller?.dismiss(completion: {
@@ -149804,7 +149804,7 @@ index c46cc951..32f76b24 100644
 +                    |> timeout(3.0, queue: Queue.mainQueue(), alternate: .single(EngineMediaResource.ResourceData(path: "", availableSize: 0, isComplete: false)))
 +                    |> deliverOnMainQueue).startStandalone(next: { data in
 +                        guard data.isComplete else {
-+                            params.present(textAlertController(context: params.context, title: "AyuGram", text: presentationData.strings.baseLanguageCode.hasPrefix("ru") ? "Сначала дождись загрузки файла, затем нажми на него ещё раз." : "Wait for the file to download, then tap it again.", actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})]), nil, .window(.root))
++                            params.present(textAlertController(context: params.context, title: "Umogram", text: presentationData.strings.baseLanguageCode.hasPrefix("ru") ? "Сначала дождись загрузки файла, затем нажми на него ещё раз." : "Wait for the file to download, then tap it again.", actions: [TextAlertAction(type: .defaultAction, title: presentationData.strings.Common_OK, action: {})]), nil, .window(.root))
 +                            return
 +                        }
 +                        ayuImportPlugin(context: params.context, fileURL: URL(fileURLWithPath: data.path), filename: name)
@@ -150056,7 +150056,7 @@ index 00000000..7a3e37dd
 +history.append(peerId: 3, messageId: 1, messageTimestamp: 100, kind: .edited, text: "future", now: now + 1000)
 +history.prune(now: now)
 +check(history.records.isEmpty, "Reject future-dated entries after a clock correction")
-+print("PASS: \(checks) total AyuGram store/history model checks; network/Postbox/UI integration not covered")
++print("PASS: \(checks) total Umogram store/history model checks; network/Postbox/UI integration not covered")
 +
 +let oldGhost = try JSONDecoder().decode(AyuGhostModeSettings.self, from: Data("{\"hideReadReceipts\":true,\"hideOnline\":true,\"hideTyping\":false,\"hideUploadProgress\":false}".utf8))
 +check(oldGhost.hideReadReceipts && oldGhost.hideOnline && !oldGhost.regexFilters.enabled && oldGhost.silentSendMode == .never, "New settings must migrate existing Ghost Mode files without resetting privacy")
@@ -150095,7 +150095,7 @@ index 00000000..7a3e37dd
 +metadataHistory.saveReactions = false
 +metadataHistory.append(peerId: 1, messageId: 2, messageTimestamp: 1, kind: .edited, text: "text", now: now, formatting: Data([1]), reactions: Data([2]))
 +check(metadataHistory.records.last?.formatting == nil && metadataHistory.records.last?.reactions == nil, "Metadata opt-outs must affect actual stored payloads")
-+print("PASS: \(checks) total AyuGram model checks; full type checking and device behavior are separate")
++print("PASS: \(checks) total Umogram model checks; full type checking and device behavior are separate")
 +
 +let originalFile = root.appendingPathComponent("original.txt")
 +try Data("hello".utf8).write(to: originalFile)
@@ -150127,7 +150127,7 @@ index 00000000..7a3e37dd
 +check(mediaHistory.records.first?.attachments?.count == 1, "Media-only messages must be representable in the archive")
 +let mediaRoundTrip = try JSONDecoder().decode(AyuMessageHistoryState.self, from: JSONEncoder().encode(mediaHistory))
 +check(mediaRoundTrip == mediaHistory, "Persist attachment references and media policy together")
-+print("PASS: \(checks) total AyuGram model/file-store checks; native account/UI integration not covered")
++print("PASS: \(checks) total Umogram model/file-store checks; native account/UI integration not covered")
 +
 +var appearance = AyuAppearanceSettings()
 +check(appearance.showGhostButton && !appearance.showMessageSeconds, "Appearance defaults preserve the existing header and timestamp style")

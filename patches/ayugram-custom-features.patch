@@ -245,7 +245,7 @@ index 86b4e0dc..79cb2d0b 100644
 +        } else if self.developers.contains(peerId) {
 +            return .developer(text: "(name) является членом команды разработчиков exteraGram.")
 +        } else if self.supporters.contains(peerId) {
-+            return .supporter(text: "(name) поддержал(а) разработку exteraGram или AyuGram и получил(а) уникальный бейдж.")
++            return .supporter(text: "(name) поддержал(а) разработку exteraGram или Umogram и получил(а) уникальный бейдж.")
 +        } else {
 +            return nil
 +        }

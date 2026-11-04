@@ -26,6 +26,17 @@ Verification required before release:
 
 Foundation model tests cover opt-ins, Codable round trip, duplicate events, record identifiers, account/state value isolation, capacity eviction, expiry, targeted purge, Unicode byte limit and clear. They do not establish Postbox or device integration correctness.
 
+## Disappearing media
+
+A separate opt-in in the same block, **Save disappearing media** (`saveDisappearing`, off by default), extends the archive to ephemeral content:
+
+- Chats with an auto-delete timer are archived like ordinary chats while the toggle is on; the timer itself is not modified and the messages still disappear.
+- View-once photos, videos and circles are copied from the already cached original in the same Postbox transaction that deletes the ephemeral replacement, before `deleteEphemeralMessages` removes it. The anchor message keeps its media until that point, so the copy is taken from the original, not the empty replacement.
+- No chat tombstone is created for view-once messages; the message disappears as usual and the copy is listed in Message History and the Media Archive.
+- Archived circles and plain videos get readable labels (`circle.mp4`, `video.mp4`) instead of a generic "attachment".
+
+All existing exclusions still apply: copy-protected content, secret chats, content that was never cached locally, and media the store has already evicted. The toggle participates in the same bounded ledger — 100 records, 8 KB texts, seven-day retention, per-account media quota — and turning it off returns those chats to ordinary exclusion on the next prune.
+
 Device-crash fixes:
 - History records encode/decode their event kind as a keyed primitive String. The pinned AdaptedPostboxEncoder and decoder trap in singleValueContainer, which synthesized raw-value enum Codable uses. JSON-only tests missed this path.
 - Eligible deleted text now remains in the chat with a registered local AyuDeletedMessageAttribute and a Deleted label beside the time. Secret/expiring/protected content remains excluded. Inline tombstones strip original media and keyboards; captured media stays in the separate bounded archive.

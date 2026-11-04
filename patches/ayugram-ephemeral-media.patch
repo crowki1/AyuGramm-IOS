@@ -1,0 +1,212 @@
+diff --git a/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistoryState.swift b/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistoryState.swift
+--- a/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistoryState.swift
++++ b/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistoryState.swift
+@@ -86,6 +86,7 @@
+     public var mediaPrivateChannels = true
+     public var mediaPublicGroups = false
+     public var mediaPrivateGroups = true
++    public var saveDisappearing = false
+     public private(set) var records: [AyuMessageHistoryRecord] = []
+     private var nextId: Int32 = 1
+     public static let maximumRecords = 100
+@@ -97,7 +98,7 @@
+     private enum CodingKeys: String, CodingKey {
+         case saveEdits, saveDeleted, saveFormatting, saveReactions, saveForBots, records, nextId
+         case mediaFileLimitMB, mediaQuotaMB
+-        case saveMedia, mediaPrivateChats, mediaPublicChannels, mediaPrivateChannels, mediaPublicGroups, mediaPrivateGroups
++        case saveMedia, mediaPrivateChats, mediaPublicChannels, mediaPrivateChannels, mediaPublicGroups, mediaPrivateGroups, saveDisappearing
+     }
+ 
+     public init(from decoder: Decoder) throws {
+@@ -116,6 +117,7 @@
+         self.mediaPrivateChannels = try values.decodeIfPresent(Bool.self, forKey: .mediaPrivateChannels) ?? true
+         self.mediaPublicGroups = try values.decodeIfPresent(Bool.self, forKey: .mediaPublicGroups) ?? false
+         self.mediaPrivateGroups = try values.decodeIfPresent(Bool.self, forKey: .mediaPrivateGroups) ?? true
++        self.saveDisappearing = try values.decodeIfPresent(Bool.self, forKey: .saveDisappearing) ?? false
+         self.records = try values.decodeIfPresent([AyuMessageHistoryRecord].self, forKey: .records) ?? []
+         self.nextId = try values.decodeIfPresent(Int32.self, forKey: .nextId) ?? 1
+         if self.nextId <= 0 || self.records.contains(where: { $0.id >= self.nextId }) {
+@@ -156,9 +158,9 @@
+ 
+     public mutating func append(peerId: Int64, messageId: Int32, messageTimestamp: Int32, kind: AyuMessageHistoryRecord.Kind, text: String, now: Int64, formatting: Data? = nil, reactions: Data? = nil, attachments: [AyuArchivedAttachment] = [], afterText: String? = nil) {
+         self.prune(now: now)
+-        let keptAttachments = self.saveMedia ? Array(attachments.prefix(4)) : []
++        let keptAttachments = (self.saveMedia || self.saveDisappearing) ? Array(attachments.prefix(4)) : []
+         let afterText = kind == .edited ? afterText.flatMap { $0.utf8.count <= Self.maximumTextLength ? $0 : nil } : nil
+-        guard (kind == .edited ? self.saveEdits : self.saveDeleted), !text.isEmpty || !(afterText ?? "").isEmpty || !keptAttachments.isEmpty else { return }
++        guard (kind == .edited ? self.saveEdits : (self.saveDeleted || self.saveDisappearing)), !text.isEmpty || !(afterText ?? "").isEmpty || !keptAttachments.isEmpty else { return }
+         // Reject oversized content rather than silently truncating an archived version.
+         guard text.utf8.count <= Self.maximumTextLength else { return }
+         let formatting = self.saveFormatting && (formatting?.count ?? 0) <= 16_384 ? formatting : nil
+diff --git a/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistory.swift b/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistory.swift
+--- a/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistory.swift
++++ b/submodules/TelegramCore/Sources/AyuGram/AyuMessageHistory.swift
+@@ -54,7 +54,7 @@
+ }
+ 
+ private func ayuCaptureAttachments(transaction: Transaction, mediaBox: MediaBox, message: Message, state: AyuMessageHistoryState) -> [AyuArchivedAttachment] {
+-    guard state.saveMedia, mediaBox.isMainProcess, let peer = transaction.getPeer(message.id.peerId) else { return [] }
++    guard state.saveMedia || state.saveDisappearing, mediaBox.isMainProcess, let peer = transaction.getPeer(message.id.peerId) else { return [] }
+     let enabled: Bool
+     if peer is TelegramUser { enabled = state.mediaPrivateChats }
+     else if let channel = peer as? TelegramChannel {
+@@ -68,7 +68,7 @@
+     var resources: [(MediaResource, String)] = []
+     for media in message.media {
+         if let file = media as? TelegramMediaFile {
+-            resources.append((file.resource, file.fileName ?? "attachment"))
++            resources.append((file.resource, ayuAttachmentDisplayName(for: file)))
+         } else if let image = media as? TelegramMediaImage, let representation = largestImageRepresentation(image.representations) {
+             resources.append((representation.resource, "photo.jpg"))
+         }
+@@ -84,6 +84,21 @@
+     return attachments
+ }
+ 
++/// AyuGram labels for archived files: circles, plain videos and photos get readable
++/// names instead of a generic "attachment".
++private func ayuAttachmentDisplayName(for file: TelegramMediaFile) -> String {
++    var isRound = false
++    var isVideo = file.mimeType.hasPrefix("video/")
++    for attribute in file.attributes {
++        if case let .Video(_, _, flags, _, _, _) = attribute, flags.contains(.instantRoundVideo) {
++            isRound = true
++        }
++    }
++    if isRound { return "circle.mp4" }
++    if isVideo { return "video.mp4" }
++    return file.fileName ?? "attachment"
++}
++
+ func ayuManageArchiveFiles(postbox: Postbox) -> Signal<Void, NoError> {
+     guard postbox.mediaBox.isMainProcess else { return .complete() }
+     let store = AyuArchiveFileStore.shared(basePath: postbox.mediaBox.basePath)
+@@ -97,7 +112,7 @@
+     |> map { names -> Void in store.prune(validNames: names) }
+ }
+ 
+-private func ayuHistoryPeerAllowsArchiving(transaction: Transaction, peerId: PeerId) -> Bool {
++private func ayuHistoryPeerAllowsArchiving(transaction: Transaction, peerId: PeerId, state: AyuMessageHistoryState) -> Bool {
+     guard [Namespaces.Peer.CloudUser, Namespaces.Peer.CloudGroup, Namespaces.Peer.CloudChannel].contains(peerId.namespace),
+           let peer = transaction.getPeer(peerId), !peer.isCopyProtectionEnabled else { return false }
+     let timeout: CachedPeerAutoremoveTimeout
+@@ -111,7 +126,8 @@
+     }
+     // Unknown chat lifetime is not evidence that content is permanent.
+     if case .known(nil) = timeout { return true }
+-    if case let .known(value?) = timeout { return value.effectiveValue == 0 }
++    // With the disappearing-media toggle, chats with an auto-delete timer are archived too.
++    if case let .known(value?) = timeout { return value.effectiveValue == 0 || state.saveDisappearing }
+     return false
+ }
+ 
+@@ -137,7 +153,7 @@
+     let original = ayuDecodeHistoryState(entry: transaction.getPreferencesEntry(key: ayuHistoryKey))
+     var state = original
+     state.prune(now: Int64(Date().timeIntervalSince1970))
+-    for peerId in Set(state.records.map { $0.peerId }) where !ayuHistoryPeerAllowsArchiving(transaction: transaction, peerId: PeerId(peerId)) {
++    for peerId in Set(state.records.map { $0.peerId }) where !ayuHistoryPeerAllowsArchiving(transaction: transaction, peerId: PeerId(peerId), state: state) {
+         state.remove(peerId: peerId)
+     }
+     if state != original {
+@@ -154,8 +170,8 @@
+     var state = original
+     let now = Int64(Date().timeIntervalSince1970)
+     state.prune(now: now)
+-    let peerAllows = ayuHistoryPeerAllowsArchiving(transaction: transaction, peerId: message.id.peerId)
+-    let updateAllows = updated.map { !$0.flags.contains(.CopyProtected) && !ayuHistoryHasExpiringAttribute($0.attributes) && ayuHistorySupportedMedia($0.media) } ?? true
++    let peerAllows = ayuHistoryPeerAllowsArchiving(transaction: transaction, peerId: message.id.peerId, state: state)
++    let updateAllows = updated.map { !$0.flags.contains(.CopyProtected) && (state.saveDisappearing || !ayuHistoryHasExpiringAttribute($0.attributes)) && ayuHistorySupportedMedia($0.media) } ?? true
+     let entities = ayuHistoryEntities(message.attributes)
+     let contentChanged = updated.map { $0.text != message.text || !areMediaArraysEqual($0.media, message.media) || (state.saveFormatting && ayuHistoryEntities($0.attributes) != entities) } ?? true
+     let isBot = (transaction.getPeer(message.id.peerId) as? TelegramUser)?.botInfo != nil || (message.author as? TelegramUser)?.botInfo != nil
+@@ -170,7 +186,7 @@
+     }
+     if !peerAllows {
+         state.remove(peerId: message.id.peerId.toInt64())
+-    } else if message.id.namespace != Namespaces.Message.Cloud || message.isCopyProtected() || ayuHistoryHasExpiringAttribute(message.attributes) || !updateAllows {
++    } else if message.id.namespace != Namespaces.Message.Cloud || message.isCopyProtected() || (!state.saveDisappearing && ayuHistoryHasExpiringAttribute(message.attributes)) || !updateAllows {
+         state.remove(peerId: message.id.peerId.toInt64(), messageId: message.id.id)
+     } else if shouldCapture, state.saveForBots || !isBot, ayuHistorySupportedMedia(message.media), contentChanged, message.text.utf8.count <= AyuMessageHistoryState.maximumTextLength {
+         let encoder = JSONEncoder()
+@@ -220,6 +236,30 @@
+     return true
+ }
+ 
++/// View-once media («disappearing» photos, videos and circles): Telegram keeps the original
++/// media inside the anchor message until the server confirms deletion. Capture the cached file
++/// into the media archive in the same transaction, before `deleteEphemeralMessages` runs. No
++/// tombstone is created — the message disappears as usual; the copy is listed in Message History
++/// and the Media Archive.
++func ayuArchiveEphemeralMessages(transaction: Transaction, mediaBox: MediaBox, peerId: PeerId, replacementIds: Set<Int32>) {
++    guard mediaBox.isMainProcess else { return }
++    let state = ayuDecodeHistoryState(entry: transaction.getPreferencesEntry(key: ayuHistoryKey))
++    guard state.saveDisappearing else { return }
++    var archivedIds = Set<Int32>()
++    transaction.withAllMessages(peerId: peerId, namespace: Namespaces.Message.Cloud, { message in
++        guard let attribute = message.attributes.first(where: { $0 is EphemeralReplacementMessageAttribute }) as? EphemeralReplacementMessageAttribute,
++              attribute.state == .active,
++              attribute.replacementMessageId.peerId == peerId,
++              attribute.replacementMessageId.namespace == Namespaces.Message.EphemeralAnchored,
++              replacementIds.contains(attribute.replacementMessageId.id),
++              !archivedIds.contains(message.id.id),
++              !state.records.contains(where: { $0.kind == .deleted && $0.peerId == message.id.peerId.toInt64() && $0.messageId == message.id.id }) else { return true }
++        archivedIds.insert(message.id.id)
++        ayuArchiveMessage(transaction: transaction, mediaBox: mediaBox, message: message, kind: .deleted)
++        return true
++    })
++}
++
+ public extension TelegramEngine.Messages {
+     func ayuArchivedAttachmentUrl(id: String) -> Signal<URL?, NoError> {
+         return self.account.postbox.transaction { transaction -> URL? in
+@@ -238,7 +278,7 @@
+         |> distinctUntilChanged
+     }
+ 
+-    func updateAyuMessageHistory(saveEdits: Bool? = nil, saveDeleted: Bool? = nil, saveFormatting: Bool? = nil, saveReactions: Bool? = nil, saveForBots: Bool? = nil, saveMedia: Bool? = nil, mediaPrivateChats: Bool? = nil, mediaPublicChannels: Bool? = nil, mediaPrivateChannels: Bool? = nil, mediaPublicGroups: Bool? = nil, mediaPrivateGroups: Bool? = nil, clear: Bool = false) -> Signal<Void, NoError> {
++    func updateAyuMessageHistory(saveEdits: Bool? = nil, saveDeleted: Bool? = nil, saveFormatting: Bool? = nil, saveReactions: Bool? = nil, saveForBots: Bool? = nil, saveMedia: Bool? = nil, saveDisappearing: Bool? = nil, mediaPrivateChats: Bool? = nil, mediaPublicChannels: Bool? = nil, mediaPrivateChannels: Bool? = nil, mediaPublicGroups: Bool? = nil, mediaPrivateGroups: Bool? = nil, clear: Bool = false) -> Signal<Void, NoError> {
+         return self.account.postbox.transaction { transaction -> Void in
+             transaction.updatePreferencesEntry(key: ayuHistoryKey, { entry in
+                 var state = ayuDecodeHistoryState(entry: entry)
+@@ -249,6 +289,7 @@
+                 if let saveReactions { state.saveReactions = saveReactions }
+                 if let saveForBots { state.saveForBots = saveForBots }
+                 if let saveMedia { state.saveMedia = saveMedia }
++                if let saveDisappearing { state.saveDisappearing = saveDisappearing }
+                 if let mediaPrivateChats { state.mediaPrivateChats = mediaPrivateChats }
+                 if let mediaPublicChannels { state.mediaPublicChannels = mediaPublicChannels }
+                 if let mediaPrivateChannels { state.mediaPrivateChannels = mediaPrivateChannels }
+diff --git a/submodules/SettingsUI/Sources/AyuGramSettingsController.swift b/submodules/SettingsUI/Sources/AyuGramSettingsController.swift
+--- a/submodules/SettingsUI/Sources/AyuGramSettingsController.swift
++++ b/submodules/SettingsUI/Sources/AyuGramSettingsController.swift
+@@ -466,7 +466,7 @@
+             })
+         ]))
+     }, update: { id, value in
+-        let _ = context.engine.messages.updateAyuMessageHistory(saveEdits: id == 0 ? value : nil, saveDeleted: id == 1 ? value : nil, saveFormatting: id == 2 ? value : nil, saveReactions: id == 3 ? value : nil, saveForBots: id == 4 ? value : nil, saveMedia: id == 5 ? value : nil, mediaPrivateChats: id == 6 ? value : nil, mediaPublicChannels: id == 7 ? value : nil, mediaPrivateChannels: id == 8 ? value : nil, mediaPublicGroups: id == 9 ? value : nil, mediaPrivateGroups: id == 10 ? value : nil).startStandalone()
++        let _ = context.engine.messages.updateAyuMessageHistory(saveEdits: id == 0 ? value : nil, saveDeleted: id == 1 ? value : nil, saveFormatting: id == 2 ? value : nil, saveReactions: id == 3 ? value : nil, saveForBots: id == 4 ? value : nil, saveMedia: id == 5 ? value : nil, mediaPrivateChats: id == 6 ? value : nil, mediaPublicChannels: id == 7 ? value : nil, mediaPrivateChannels: id == 8 ? value : nil, mediaPublicGroups: id == 9 ? value : nil, mediaPrivateGroups: id == 10 ? value : nil, saveDisappearing: id == 11 ? value : nil).startStandalone()
+     }, record: { id in
+         push?(ayuHistoryRecordController(context: context, recordId: id))
+     }, context: context)
+@@ -500,7 +500,8 @@
+             .toggle(8, AyuStrings.privateChannelMedia.text(ru), history.mediaPrivateChannels),
+             .toggle(9, AyuStrings.publicGroupMedia.text(ru), history.mediaPublicGroups),
+             .toggle(10, AyuStrings.privateGroupMedia.text(ru), history.mediaPrivateGroups),
+-            .info(11, AyuStrings.onlyWhatHasAlreadyArrivedKept.text(ru))
++            .toggle(11, ru ? "Сохранять исчезающие медиа" : "Save disappearing media", history.saveDisappearing),
++            .info(12, AyuStrings.onlyWhatHasAlreadyArrivedKept.text(ru))
+         ]
+         entries.append(.archiveLink(AyuStrings.savedMessagesArchive.text(ru), "\(records.count)"))
+         let data = ItemListPresentationData(presentationData)
+diff --git a/submodules/TelegramCore/Sources/State/AccountStateManagementUtils.swift b/submodules/TelegramCore/Sources/State/AccountStateManagementUtils.swift
+--- a/submodules/TelegramCore/Sources/State/AccountStateManagementUtils.swift
++++ b/submodules/TelegramCore/Sources/State/AccountStateManagementUtils.swift
+@@ -4620,6 +4620,7 @@
+             case let .UpsertEphemeralReplacement(anchorMessageId, message):
+                 upsertEphemeralReplacement(transaction: transaction, anchorMessageId: anchorMessageId, message: message)
+             case let .DeleteEphemeralMessages(peerId, ids):
++                ayuArchiveEphemeralMessages(transaction: transaction, mediaBox: mediaBox, peerId: peerId, replacementIds: Set(ids))
+                 deleteEphemeralMessages(transaction: transaction, peerId: peerId, ids: ids)
+             case let .DeleteMessagesWithGlobalIds(ids):
+                 var retainedGlobalIds = Set<Int32>()

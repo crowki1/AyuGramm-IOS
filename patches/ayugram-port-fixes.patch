@@ -57,24 +57,6 @@ index d0de06d1..42b85492 100644
  
  [
      filegroup(
-@@ -656,7 +656,7 @@ plist_fragment(
-     template =
-     """
-     <key>CFBundleDisplayName</key>
--    <string>AyuGram</string>
-+    <string>Umogram</string>
-     """
- )
- 
-@@ -1718,7 +1718,7 @@ plist_fragment(
-     <key>CFBundleDevelopmentRegion</key>
-     <string>en</string>
-     <key>CFBundleDisplayName</key>
--    <string>AyuGram</string>
-+    <string>Umogram</string>
-     <key>CFBundleIdentifier</key>
-     <string>{telegram_bundle_id}</string>
-     <key>CFBundleName</key>
 @@ -1780,7 +1780,7 @@ plist_fragment(
      <key>NSCameraUsageDescription</key>
      <string>We need this so that you can take and share photos and videos.</string>

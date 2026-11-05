@@ -171,8 +171,8 @@ index 223c7092..3b6777fa 100644
          return russian
 -            ? "Этот плагин внедряется в работу приложения (плеер, тексты песен и т.п.). Такие плагины можно ставить только из официального каталога Umogram.\n\nЧтобы всё равно поставить его, включите «Инжект-плагины не из официального источника» в настройках разработчика."
 -            : "This plugin injects into the app (player, lyrics and so on). Such plugins can only be installed from the official Umogram catalog.\n\nTo install it anyway, turn on \"Injecting plugins from unofficial sources\" in the developer settings."
-+            ? "Этот плагин внедряется в работу приложения (плеер, тексты песен и т.п.). Такие плагины можно ставить только из официального каталога  Umogram. \n\nЧтобы всё равно поставить его, включите «Инжект-плагины не из официального источника» в настройках разработчика."
-+            : "This plugin injects into the app (player, lyrics and so on). Such plugins can only be installed from the official  Umogram catalog .\n\nTo install it anyway, turn on \"Injecting plugins from unofficial sources\" in the developer settings."
++            ? "Этот плагин внедряется в работу приложения (плеер, тексты песен и т.п.). Такие плагины можно ставить только из официального каталога Umogram.\n\nЧтобы всё равно поставить его, включите «Инжект-плагины не из официального источника» в настройках разработчика."
++            : "This plugin injects into the app (player, lyrics and so on). Such plugins can only be installed from the official Umogram catalog.\n\nTo install it anyway, turn on \"Injecting plugins from unofficial sources\" in the developer settings."
      }
  
      public static func disclaimerText(_ russian: Bool) -> String {
@@ -955,7 +955,7 @@ index 2bad9fb0..6e085421 100644
      /// The label line the app shows under the user's name.
      public static func caption(_ entry: Entry, russian: Bool) -> String {
 -        return entry.text + (russian ? " — подтверждено командой Umogram для iOS." : " — confirmed by the Umogram for iOS team.")
-+        return entry.text + (russian ? " — подтверждено командой  Umogram. " : " — confirmed by the Umogram team.")
++        return entry.text + (russian ? " — подтверждено командой Umogram." : " — confirmed by the Umogram team.")
      }
  }
 diff --git a/submodules/Display/Source/AyuCustomization.swift b/submodules/Display/Source/AyuCustomization.swift
@@ -1565,7 +1565,7 @@ index 0b0e769f..f4a1d917 100644
              .info(1, AyuDecoyRow.info.rawValue, ru ? "Работает, когда включено и заданы оба кода." : "Works when it is on and both codes are set."),
              .header(2, AyuDecoyRow.howHeader.rawValue, ru ? "КАК ЭТО РАБОТАЕТ" : "HOW IT WORKS"),
 -            .info(2, AyuDecoyRow.how.rawValue, ru ? "При запуске появляется иконка Umogram. Два быстрых нажатия по ней — и открывается фейк: второй аккаунт или встроенный липовый Telegram. В фейке нет раздела Umogram, все функции Umogram выключены.\n\nПосле полного закрытия приложения Umogram спросит код. Настоящий код вернёт ваш аккаунт и больше не будет спрашиваться до следующего фейка. Фейковый код покажет «Umogram больше не работает» и сотрёт все локальные данные — понадобится переустановка." : "At launch the Umogram icon appears. Two quick taps on it open the decoy: a second account or a built-in stand-in Telegram. The decoy has no Umogram section and every Umogram feature is off.\n\nAfter the app is fully closed, Umogram asks for a code. The real code brings your account back and is not asked again until the next decoy. The fake code shows \"Umogram no longer works\" and wipes all local data — a reinstall is needed.")
-+            .info(2, AyuDecoyRow.how.rawValue, ru ? "При запуске появляется иконка  Umogram.  Два быстрых нажатия по ней — и открывается фейк: второй аккаунт или встроенный липовый Telegram. В фейке нет раздела Umogram, все функции Umogram выключены.\n\nПосле полного закрытия приложения Umogram спросит код. Настоящий код вернёт ваш аккаунт и больше не будет спрашиваться до следующего фейка. Фейковый код покажет «Umogram больше не работает» и сотрёт все локальные данные — понадобится переустановка." : "At launch the Umogram icon appears. Two quick taps on it open the decoy: a second account or a built-in stand-in Telegram. The decoy has no Umogram section and every Umogram feature is off.\n\nAfter the app is fully closed, Umogram asks for a code. The real code brings your account back and is not asked again until the next decoy. The fake code shows \"Umogram no longer works\" and wipes all local data — a reinstall is needed.")
++            .info(2, AyuDecoyRow.how.rawValue, ru ? "При запуске появляется иконка Umogram. Два быстрых нажатия по ней — и открывается фейк: второй аккаунт или встроенный липовый Telegram. В фейке нет раздела Umogram, все функции Umogram выключены.\n\nПосле полного закрытия приложения Umogram спросит код. Настоящий код вернёт ваш аккаунт и больше не будет спрашиваться до следующего фейка. Фейковый код покажет «Umogram больше не работает» и сотрёт все локальные данные — понадобится переустановка." : "At launch the Umogram icon appears. Two quick taps on it open the decoy: a second account or a built-in stand-in Telegram. The decoy has no Umogram section and every Umogram feature is off.\n\nAfter the app is fully closed, Umogram asks for a code. The real code brings your account back and is not asked again until the next decoy. The fake code shows \"Umogram no longer works\" and wipes all local data — a reinstall is needed.")
          ]
          let data = ItemListPresentationData(presentationData)
          let state = ItemListControllerState(presentationData: data, title: .text(ru ? "Фейк-режим" : "Decoy mode"), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
@@ -1617,7 +1617,7 @@ index 36cb3a18..c6bf269e 100644
              let presentationData = context.sharedContext.currentPresentationData.with { $0 }
              let ru = presentationData.strings.baseLanguageCode.hasPrefix("ru")
 -            presentController?(textAlertController(context: context, title: ru ? "Выключить режим разработчика?" : "Turn off developer mode?", text: ru ? "Все опции разработчика выключатся, а раздел «Отладка» исчезнет после перезапуска. Включить снова — 5 тапов по версии Umogram." : "Every developer option is turned off and the Debugging section disappears after a relaunch. To turn it back on, tap the Umogram version 5 times.", actions: [
-+            presentController?(textAlertController(context: context, title: ru ? "Выключить режим разработчика?" : "Turn off developer mode?", text: ru ? "Все опции разработчика выключатся, а раздел «Отладка» исчезнет после перезапуска. Включить снова — 5 тапов по версии  Umogram. " : "Every developer option is turned off and the Debugging section disappears after a relaunch. To turn it back on, tap the Umogram version 5 times.", actions: [
++            presentController?(textAlertController(context: context, title: ru ? "Выключить режим разработчика?" : "Turn off developer mode?", text: ru ? "Все опции разработчика выключатся, а раздел «Отладка» исчезнет после перезапуска. Включить снова — 5 тапов по версии Umogram." : "Every developer option is turned off and the Debugging section disappears after a relaunch. To turn it back on, tap the Umogram version 5 times.", actions: [
                  TextAlertAction(type: .genericAction, title: presentationData.strings.Common_Cancel, action: {
                      // Redraw the switch back on.
                      NotificationCenter.default.post(name: AyuDeveloperSettings.didChangeNotification, object: nil)
@@ -1642,7 +1642,7 @@ index 36cb3a18..c6bf269e 100644
 -        entries.append(toggle(3, .allowUnofficialInjectPlugins, symbol("exclamationmark.shield.fill", 0xFF3B30), ru ? "Инжект-плагины не из официального источника" : "Injecting plugins from unofficial sources", ru ? "Разрешить плагины, которые внедряются в приложение, без подписи Umogram" : "Allow plugins that inject into the app without an Umogram signature", settings.allowUnofficialInjectPlugins))
 -        entries.append(.info(3, AyuDeveloperRow.unofficialInjectInfo.rawValue, ru ? "⚠️ Такие плагины не проверены Umogram. Перед установкой каждого будет предупреждение, а вся ответственность за последствия лежит полностью на вас." : "⚠️ Such plugins are not reviewed by Umogram. Each one shows a warning before installing, and the responsibility for the consequences is entirely yours."))
 +        entries.append(toggle(3, .allowUnofficialInjectPlugins, symbol("exclamationmark.shield.fill", 0xFF3B30), ru ? "Инжект-плагины не из официального источника" : "Injecting plugins from unofficial sources", ru ? "Разрешить плагины, которые внедряются в приложение, без подписи Umogram" : "Allow plugins that inject into the app without a Umogram signature", settings.allowUnofficialInjectPlugins))
-+        entries.append(.info(3, AyuDeveloperRow.unofficialInjectInfo.rawValue, ru ? "⚠️ Такие плагины не проверены  Umogram.  Перед установкой каждого будет предупреждение, а вся ответственность за последствия лежит полностью на вас." : "⚠️ Such plugins are not reviewed by  Umogram.  Each one shows a warning before installing, and the responsibility for the consequences is entirely yours."))
++        entries.append(.info(3, AyuDeveloperRow.unofficialInjectInfo.rawValue, ru ? "⚠️ Такие плагины не проверены Umogram. Перед установкой каждого будет предупреждение, а вся ответственность за последствия лежит полностью на вас." : "⚠️ Such plugins are not reviewed by Umogram. Each one shows a warning before installing, and the responsibility for the consequences is entirely yours."))
          entries.append(contentsOf: [
              .header(4, 30, ru ? "ДАННЫЕ" : "DATA"),
              toggle(4, .showInternalIds, symbol("number", 0x32ADE6), ru ? "Внутренние ID в меню" : "Internal IDs in menus", nil, settings.showInternalIds),
@@ -1888,7 +1888,7 @@ index b57cf074..04ce4668 100644
      }
      private func error(_ error: Error) {
 -        let message = self.russian ? "Этот плагин пока не поддерживается в Umogram для iOS. Установленные плагины не изменились." : "This plugin is not supported by Umogram for iOS yet. Installed plugins were not changed."
-+        let message = self.russian ? "Этот плагин пока не поддерживается в  Umogram.  Установленные плагины не изменились." : "This plugin is not supported by Umogram yet. Installed plugins were not changed."
++        let message = self.russian ? "Этот плагин пока не поддерживается в Umogram. Установленные плагины не изменились." : "This plugin is not supported by Umogram yet. Installed plugins were not changed."
          let detail = (error as? LocalizedError)?.errorDescription
          self.alert(title: self.russian ? "Ошибка плагина" : "Plugin error", message: message + (detail.map { "\n\n" + String($0.prefix(512)) } ?? ""))
      }
@@ -1906,7 +1906,7 @@ index b57cf074..04ce4668 100644
                      }
                      guard let plugin = card.plugin else {
 -                        self.alert(title: card.name, message: self.russian ? "Этого плагина нет в вашей версии Umogram. Обновите приложение." : "This plugin is not in your version of Umogram. Update the app.")
-+                        self.alert(title: card.name, message: self.russian ? "Этого плагина нет в вашей версии  Umogram.  Обновите приложение." : "This plugin is not in your version of  Umogram.  Update the app.")
++                        self.alert(title: card.name, message: self.russian ? "Этого плагина нет в вашей версии Umogram. Обновите приложение." : "This plugin is not in your version of Umogram. Update the app.")
                          return
                      }
                      let installed = AyuNativePlugins.isInstalled(plugin)
@@ -2117,7 +2117,7 @@ index 9d56f3b3..9a31d401 100644
          case .nearbyContactNearby: return "Рядом"
          case .nearbyContactOpenProfile: return "Открыть профиль"
 -        case .nearbyContactSearching: return "Ищем iPhone рядом… Попроси друга открыть этот же экран в Umogram. Bluetooth и Wi-Fi должны быть включены."
-+        case .nearbyContactSearching: return "Ищем iPhone рядом… Попроси друга открыть этот же экран в  Umogram.  Bluetooth и Wi-Fi должны быть включены."
++        case .nearbyContactSearching: return "Ищем iPhone рядом… Попроси друга открыть этот же экран в Umogram. Bluetooth и Wi-Fi должны быть включены."
          case .nearbyContactSend: return "Отправить"
          case .nearbyContactSendMine: return "Отправить свой"
          case .nearbyContactSent: return "Отправлено"
@@ -2167,7 +2167,7 @@ index 9d56f3b3..9a31d401 100644
          case .nearbyContactNearby: return "Nearby"
          case .nearbyContactOpenProfile: return "Open Profile"
 -        case .nearbyContactSearching: return "Looking for iPhones nearby… Ask your friend to open this screen in Umogram. Bluetooth and Wi-Fi must be on."
-+        case .nearbyContactSearching: return "Looking for iPhones nearby… Ask your friend to open this screen in  Umogram.  Bluetooth and Wi-Fi must be on."
++        case .nearbyContactSearching: return "Looking for iPhones nearby… Ask your friend to open this screen in Umogram. Bluetooth and Wi-Fi must be on."
          case .nearbyContactSend: return "Send"
          case .nearbyContactSendMine: return "Send Mine"
          case .nearbyContactSent: return "Sent"
@@ -2207,7 +2207,7 @@ index 3cbc9058..837f2ee1 100644
 +                        message = ru ? "Настройки восстановлены, плагинов: \(result). Перезапустите Umogram, чтобы всё применилось." : "Settings restored, plugins: \(result). Restart Umogram to apply everything."
                      } else {
 -                        message = ru ? "Неверный пароль или это не бэкап Umogram." : "Wrong password, or not an Umogram backup."
-+                        message = ru ? "Неверный пароль или это не бэкап  Umogram. " : "Wrong password, or not a  Umogram backup ."
++                        message = ru ? "Неверный пароль или это не бэкап Umogram." : "Wrong password, or not a Umogram backup."
                      }
                      let done = UIAlertController(title: nil, message: message, preferredStyle: .alert)
                      done.addAction(UIAlertAction(title: "OK", style: .default))
@@ -2250,7 +2250,7 @@ index 49787533..8b5fbd27 100644
                      alert(russian ? "Настройки восстановлены" : "Settings restored", russian ? "Значений: \(count). Перезапустите приложение, чтобы применить всё." : "\(count) values. Relaunch the app to apply everything.")
                  } catch {
 -                    alert(russian ? "Не удалось импортировать" : "Import failed", russian ? "Это не файл настроек Umogram." : "This is not an Umogram settings file.")
-+                    alert(russian ? "Не удалось импортировать" : "Import failed", russian ? "Это не файл настроек  Umogram. " : "This is not a Umogram settings file.")
++                    alert(russian ? "Не удалось импортировать" : "Import failed", russian ? "Это не файл настроек Umogram." : "This is not a Umogram settings file.")
                  }
              })
              AyuFontPickerDelegate.current = delegate
@@ -2513,7 +2513,7 @@ index 00000000..640443ac
 +
 +    /// Shown as the gift's message, so nobody takes it for a gift Telegram knows about.
 +    public static func note(_ russian: Bool) -> String {
-+        return russian ? "Выдан в  Umogram.  Виден только в  Umogram. " : "Granted in  Umogram.  Visible only in  Umogram. "
++        return russian ? "Выдан в Umogram. Виден только в Umogram." : "Granted in Umogram. Visible only in Umogram."
 +    }
 +}
 diff --git a/submodules/TelegramCore/Sources/AyuGram/AyuGrantedGifts.swift b/submodules/TelegramCore/Sources/AyuGram/AyuGrantedGifts.swift
@@ -3507,7 +3507,7 @@ index 163ff3ad..61a875e5 100644
 +            let present: (UIViewController) -> Void = { controller in
 +                context.sharedContext.applicationBindings.presentNativeController(controller)
 +            }
-+            let alert = UIAlertController(title: ru ? "Подпись подарка" : "Gift signature", message: ru ? "Её увидят все, у кого  Umogram.  Пусто — убрать." : "Everyone on Umogram sees it. Leave empty to remove it.", preferredStyle: .alert)
++            let alert = UIAlertController(title: ru ? "Подпись подарка" : "Gift signature", message: ru ? "Её увидят все, у кого Umogram. Пусто — убрать." : "Everyone on Umogram sees it. Leave empty to remove it.", preferredStyle: .alert)
 +            alert.addTextField(configurationHandler: { field in
 +                field.text = ayuGrantedGiftText(account: context.account, reference: reference) ?? ""
 +                field.autocapitalizationType = .sentences
@@ -3867,7 +3867,7 @@ index 9b76fb8f..17b2a973 100644
 +                if case let .generic(value) = gift { return value }
 +                return nil
 +            }.sorted(by: { $0.price < $1.price })
-+            let sheet = AyuBadgeEditor.menu(title: ru ? "Выдать подарок" : "Grant a gift", message: ru ? "Его увидят все, у кого Umogram, с пометкой, что он выдан в  Umogram. " : "Everyone on Umogram sees it, marked as granted in  Umogram. ")
++            let sheet = AyuBadgeEditor.menu(title: ru ? "Выдать подарок" : "Grant a gift", message: ru ? "Его увидят все, у кого Umogram, с пометкой, что он выдан в Umogram." : "Everyone on Umogram sees it, marked as granted in Umogram.")
 +            if !generic.isEmpty {
 +                sheet.addAction(UIAlertAction(title: ru ? "Обычный подарок…" : "Plain gift…", style: .default, handler: { _ in
 +                    AyuBadgeEditor.chooseGift(generic, ru: ru, present: present, done: { gift in
@@ -4397,7 +4397,7 @@ index a6033b8f..fa9d9477 100644
              })
          }
 -        let sheet = UIAlertController(title: ru ? "Добро пожаловать в Umogram" : "Welcome to Umogram", message: ru ? "Выберите начальные настройки. Всё можно поменять в Umogram." : "Pick a starting setup. Everything can be changed in Umogram.", preferredStyle: .alert)
-+        let sheet = UIAlertController(title: ru ? "Добро пожаловать в Umogram" : "Welcome to Umogram", message: ru ? "Выберите начальные настройки. Всё можно поменять в  Umogram. " : "Pick a starting setup. Everything can be changed in  Umogram. ", preferredStyle: .alert)
++        let sheet = UIAlertController(title: ru ? "Добро пожаловать в Umogram" : "Welcome to Umogram", message: ru ? "Выберите начальные настройки. Всё можно поменять в Umogram." : "Pick a starting setup. Everything can be changed in Umogram.", preferredStyle: .alert)
          sheet.addAction(UIAlertAction(title: ru ? "🕵️ Максимум приватности" : "🕵️ Maximum privacy", style: .default, handler: { _ in apply(0) }))
          sheet.addAction(UIAlertAction(title: ru ? "🖥 Как AyuGram Desktop" : "🖥 Like AyuGram Desktop", style: .default, handler: { _ in apply(1) }))
          sheet.addAction(UIAlertAction(title: ru ? "🧘 Минимализм" : "🧘 Minimalism", style: .default, handler: { _ in apply(2) }))
@@ -4506,7 +4506,7 @@ index d43d2f38..24299b31 100644
          func text(_ russian: Bool) -> String {
              switch self {
 -            case .notAuthorized: return russian ? "Разрешите распознавание речи: Настройки → Umogram." : "Allow speech recognition in Settings → Umogram."
-+            case .notAuthorized: return russian ? "Разрешите распознавание речи: Настройки →  Umogram. " : "Allow speech recognition in Settings →  Umogram. "
++            case .notAuthorized: return russian ? "Разрешите распознавание речи: Настройки → Umogram." : "Allow speech recognition in Settings → Umogram."
              case .unsupportedLanguage: return russian ? "Распознавание этого языка недоступно на устройстве." : "Speech recognition is not available for this language."
              case .conversion: return russian ? "Не удалось подготовить аудио." : "The audio could not be prepared."
              case let .recognition(message): return (russian ? "Не удалось распознать: " : "Recognition failed: ") + message

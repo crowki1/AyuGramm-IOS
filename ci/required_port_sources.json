@@ -53,6 +53,7 @@
   "submodules/Display/Source/AyuAccountScope.swift",
   "submodules/Display/Source/AyuAppearancePlus.swift",
   "submodules/Display/Source/AyuArcadeGameController.swift",
+  "submodules/Display/Source/AyuBackgroundKeepAlive.swift",
   "submodules/Display/Source/AyuBookmarks.swift",
   "submodules/Display/Source/AyuChatColorPickerController.swift",
   "submodules/Display/Source/AyuChatListSwipes.swift",

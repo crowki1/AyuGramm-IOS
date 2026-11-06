@@ -81089,7 +81089,7 @@ index e2236c5f..0dee1d96 100644
 +        ])
          let data = ItemListPresentationData(presentationData)
          let state = ItemListControllerState(presentationData: data, title: .text(""), leftNavigationButton: nil, rightNavigationButton: nil, backNavigationButton: ItemListBackButton(title: presentationData.strings.Common_Back))
--        return (state, (ItemListNodeState(presentationData: data, entries: entries, style: .blocks, animateChanges: false), arguments))
+         return (state, (ItemListNodeState(presentationData: data, entries: entries, style: .blocks, animateChanges: false), arguments))
      }
 -    let controller = ItemListController(context: context, state: signal)
 +    let controller = AyuGramSettingsListController(context: context, state: signal)

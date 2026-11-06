@@ -132,10 +132,10 @@ class SupporterBadgeTests(unittest.TestCase):
     def test_creator_badge_and_brand_capitalization(self):
         badges = json.loads((ROOT / "assets" / "ayugram_ios_badges.json").read_text())["badges"]
         creator = next(badge for badge in badges if badge["id"] == 7864640050)
-        self.assertIn("создатель VoidGram", creator["title"])
+        self.assertIn("создатель Umogram", creator["title"])
         self.assertNotIn("членом команды", creator["title"])
         self.assertIsInstance(creator["documentId"], int)
-        self.assertTrue(all("VoidGram" in badge["title"] for badge in badges if badge["id"] in {8276132300, 7556953433, 7864640050}))
+        self.assertTrue(all("Umogram" in badge["title"] for badge in badges if badge["id"] in {8276132300, 7556953433, 7864640050}))
         self.assertFalse(any("ayugram-ios" in badge.get("title", "").lower() for badge in badges))
 
     def test_position_setting_is_removed_and_ios_badges_always_lead(self):

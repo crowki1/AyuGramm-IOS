@@ -586,6 +586,7 @@ index 09b0c2ba..d5940bb8 100644
 +            if value {
 +                UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { _, _ in })
 +            }
++            NotificationCenter.default.post(name: ayuLocalSettingsChanged, object: nil)
 +            return
 +        }
 +        if id == 3 { AyuBackgroundKeepAlive.shared.isEnabled = value; return }
